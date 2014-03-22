@@ -268,15 +268,17 @@ a:focus {
 }
 
 #title h1 {
-    font-size: 70px;
+  font-size: 70px;
 }
 
 #title h2 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 #title h3 {
-    font-size: 40px;
+  padding-top: 50px;
+  font-size: 40px;
+  float: right;
 }
 
 #title .footnote {
