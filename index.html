@@ -12,7 +12,8 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
     <link href="css/type-prog.css" rel="stylesheet" />
-    
+    <link href="css/scala.css" rel="stylesheet" />
+
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 </head>
@@ -56,11 +57,119 @@
 
   <div id="in-subspace" class="step mario" data-x="400" data-z="-300" data-rotate-y="270">
     <img src="imgs/Subcon.png">
-    <span>SUB-CON!</span>
+    <span>SUBSPACE!</span>
   </div>
 
-  <div id="declarations" class="step" >
-    <span class="scala">val a = "a string"</span>
+  <div id="val" class="step" data-x="2000"  data-y="-2000">
+    <pre><code class="scala">
+      val a = "a string"
+    </code></pre>
+  </div>
+
+  <div id="lazy-val" class="step" data-x="2000" data-y="-1500">
+    <pre><code class="scala">
+      lazy val b = 42
+    </code></pre>
+  </div>
+
+  <div id="def" class="step" data-x="2000" data-y="-1000">
+    <pre><code class="scala">
+      def c = new java.util.Date
+    </code></pre>
+  </div>
+
+  <div id="var" class="step" data-x="2000" data-y="-500">
+    <pre><code class="scala">
+      var d = List("d")
+    </code></pre>
+  </div>
+
+  <div id="type" class="step" data-x="2000">
+    <pre><code class="scala">
+      type e = String
+    </code></pre>
+  </div>
+
+  <div id="boolval" class="step" data-y="1000">
+    <pre><code class="scala">
+sealed trait BoolVal
+case object TrueVal extends BoolVal
+case object FalseVal extends BoolVal
+    </code></pre>
+  </div>
+
+  <div id="boolval-or-not" class="step" data-y="2000">
+    <pre><code class="scala">
+sealed trait BoolVal {
+  def not:BoolVal
+  def or(that:BoolVal):BoolVal
+}
+    </code></pre>
+  </div>
+
+  <div id="trueval-or-not" class="step" data-y="3000">
+    <pre><code class="scala">
+case object TrueVal extends BoolVal {
+  override val not = FalseVal
+  override def or(that:BoolVal) = TrueVal
+}
+    </code></pre>
+  </div>
+
+  <div id="falseval-or-not" class="step" data-y="4000">
+    <pre><code class="scala">
+case object FalseVal extends BoolVal {
+  override val not = TrueVal
+  override def or(that:BoolVal) = that
+}
+    </code> </pre>
+  </div>
+
+  <div id="booltype" class="step" data-x="1300" data-y="1000">
+    <pre><code class="scala">
+sealed trait BoolType
+sealed trait TrueType extends BoolType
+sealed trait FalseType extends BoolType
+    </code></pre>
+  </div>
+
+  <div id="booltype-or-not" class="step" data-x="1300" data-y="2000">
+    <pre><code class="scala">
+sealed trait BoolType {
+  type Not &lt;: BoolType
+  type Or[That &lt;: BoolType] &lt;: BoolType
+}
+    </code></pre>
+  </div>
+
+  <div id="truetype-or-not" class="step" data-x="1300" data-y="3000">
+    <pre><code class="scala">
+sealed trait TrueType extends BoolType {
+  override type Not = FalseType
+  override type Or[That &lt;: BoolType] = TrueType
+}
+    </code></pre>
+  </div>
+
+  <div id="falsetype-or-not" class="step" data-x="1300" data-y="4000">
+    <pre><code class="scala">
+sealed trait FalseType extends BoolType {
+  override type Not = TrueType
+  override type Or[That &lt;: BoolType] = That
+}
+    </code> </pre>
+  </div>
+
+  <div id="val-vs-type" class="step" data-x="850" data-y="1000" data-scale="1.5">
+  </div>
+
+  <div id="val-vs-type-bool-or-not" class="step" data-x="850" data-y="2000" data-scale="1.5">
+  </div>
+
+  <div id="val-vs-type-true-or-not" class="step" data-x="850" data-y="3000" data-scale="1.5">
+  </div>
+
+  <div id="val-vs-type-false-or-not" class="step" data-x="850" data-y="4000" data-scale="1.5">
   </div>
 
     <!--
@@ -93,7 +202,9 @@ if ("ontouchstart" in document.documentElement) {
 </script>
 
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script src="js/highlight.min.js"></script>
+<script src="js/scala.min.js"></script>
+<script>impress().init();hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

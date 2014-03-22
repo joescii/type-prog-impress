@@ -302,6 +302,10 @@ a:focus {
   text-align: center;
 }
 
+code {
+  float: left;
+}
+
 /*
     The last step is an overview.
     There is no content in it, so we make sure it's not visible because we want
