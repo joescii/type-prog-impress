@@ -273,6 +273,7 @@ a:focus {
 
 #title h2 {
   font-size: 50px;
+  font-style: italic;
 }
 
 #title h3 {
@@ -288,6 +289,18 @@ a:focus {
   clear: right;
 }
 
+.mario img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mario span {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
 /*
     The last step is an overview.
