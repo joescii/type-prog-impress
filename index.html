@@ -90,7 +90,7 @@
     </code></pre>
   </div>
 
-  <div id="boolval" class="step" data-y="1000">
+  <div id="boolval" class="step all" data-y="1000">
     <pre><code class="scala">
 sealed trait BoolVal
 case object TrueVal extends BoolVal
@@ -98,7 +98,7 @@ case object FalseVal extends BoolVal
     </code></pre>
   </div>
 
-  <div id="boolval-or-not" class="step" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90">
+  <div id="boolval-or-not" class="step all" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90">
     <pre><code class="scala">
 sealed trait BoolVal {
   def not:BoolVal
@@ -107,7 +107,7 @@ sealed trait BoolVal {
     </code></pre>
   </div>
 
-  <div id="trueval-or-not" class="step" data-x="1300" data-y="3000" data-rotate-y="180">
+  <div id="trueval-or-not" class="step all" data-x="1300" data-y="3000" data-rotate-y="180">
     <pre><code class="scala">
 case object TrueVal extends BoolVal {
   override val not = FalseVal
@@ -116,7 +116,7 @@ case object TrueVal extends BoolVal {
     </code></pre>
   </div>
 
-  <div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270">
+  <div id="falseval-or-not" class="step all" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270">
     <pre><code class="scala">
 case object FalseVal extends BoolVal {
   override val not = TrueVal
@@ -125,7 +125,7 @@ case object FalseVal extends BoolVal {
     </code> </pre>
   </div>
 
-  <div id="booltype" class="step" data-x="1300" data-y="1000" data-rotate-y="360">
+  <div id="booltype" class="step all" data-x="1300" data-y="1000" data-rotate-y="360">
     <pre><code class="scala">
 sealed trait BoolType
 sealed trait TrueType extends BoolType
@@ -136,7 +136,7 @@ sealed trait FalseType extends BoolType
   <div id="val-vs-type" class="step" data-x="850" data-y="1000" data-scale="1.5" data-rotate-y="360">
   </div>
 
-  <div id="booltype-or-not" class="step" data-x="1000" data-y="2000" data-rotate-y="450">
+  <div id="booltype-or-not" class="step all" data-x="1000" data-y="2000" data-rotate-y="450">
     <pre><code class="scala">
 sealed trait BoolType {
   type Not &lt;: BoolType
@@ -148,7 +148,7 @@ sealed trait BoolType {
   <div id="val-vs-type-bool-or-not" class="step" data-x="850" data-y="2000" data-z="300" data-scale="1.5" data-rotate-y="450">
   </div>
 
-  <div id="truetype-or-not" class="step" data-y="3000" data-rotate-y="540">
+  <div id="truetype-or-not" class="step all" data-y="3000" data-rotate-y="540">
     <pre><code class="scala">
 sealed trait TrueType extends BoolType {
   override type Not = FalseType
@@ -160,7 +160,7 @@ sealed trait TrueType extends BoolType {
   <div id="val-vs-type-true-or-not" class="step" data-x="400" data-y="3000" data-scale="1.5" data-rotate-y="540">
   </div>
 
-  <div id="falsetype-or-not" class="step" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630">
+  <div id="falsetype-or-not" class="step all" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630">
     <pre><code class="scala">
 sealed trait FalseType extends BoolType {
   override type Not = TrueType
@@ -204,6 +204,8 @@ if ("ontouchstart" in document.documentElement) {
 <script src="js/impress.js"></script>
 <script src="js/highlight.min.js"></script>
 <script src="js/scala.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/type-prog.js"></script>
 <script>impress().init();hljs.initHighlightingOnLoad();</script>
 
 </body>
