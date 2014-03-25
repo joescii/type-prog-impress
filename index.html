@@ -27,7 +27,7 @@
 
 <div id="impress">
 
-  <div id="title" class="step" data-x="-1000" >
+  <div id="title" class="step" data-x="-1000">
     <h1>Type-Level Programming</h1>
     <h2>The Sub-space of Scala</h2>
     <h3><b>Joe Barnes</b></h3>
@@ -40,7 +40,7 @@
     <p><b>That sounds like math!</b></p>
   </div>
 
-  <div id="mario2" class="step mario" data-x="700" >
+  <div id="mario2" class="step mario" data-x="700">
     <img src="imgs/Mario2.png">
     <span>Normal value programming</span>
   </div>
@@ -78,19 +78,19 @@
     </code></pre>
   </div>
 
-  <div id="var" class="step" data-x="2000" data-y="-500">
+  <div id="var" class="step" data-x="2000" data-y="-500" data-bg="sc">
     <pre><code class="scala">
       var list = List("a", "b", "c")
     </code></pre>
   </div>
 
-  <div id="type" class="step" data-x="2000">
+  <div id="type" class="step" data-x="2000" data-bg="ss">
     <pre><code class="scala">
       type MyMap = Map[Int, String]
     </code></pre>
   </div>
 
-  <div id="boolval" class="step all" data-y="1000">
+  <div id="boolval" class="step all" data-y="1000" data-bg="sc">
     <pre><code class="scala">
 sealed trait BoolVal
 case object TrueVal extends BoolVal
@@ -116,7 +116,7 @@ case object TrueVal extends BoolVal {
     </code></pre>
   </div>
 
-  <div id="falseval-or-not" class="step all" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270">
+  <div id="falseval-or-not" class="step all" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270" data-bg="sc">
     <pre><code class="scala">
 case object FalseVal extends BoolVal {
   override val not = TrueVal
@@ -125,7 +125,7 @@ case object FalseVal extends BoolVal {
     </code> </pre>
   </div>
 
-  <div id="booltype" class="step all" data-x="1300" data-y="1000" data-rotate-y="360">
+  <div id="booltype" class="step all" data-x="1300" data-y="1000" data-rotate-y="360" data-bg="ss">
     <pre><code class="scala">
 sealed trait BoolType
 sealed trait TrueType extends BoolType
@@ -133,10 +133,10 @@ sealed trait FalseType extends BoolType
     </code></pre>
   </div>
 
-  <div id="val-vs-type" class="step" data-x="850" data-y="1000" data-scale="1.5" data-rotate-y="360">
+  <div id="val-vs-type" class="step" data-x="850" data-y="1000" data-scale="1.5" data-rotate-y="360" data-bg="sc">
   </div>
 
-  <div id="booltype-or-not" class="step all" data-x="1000" data-y="2000" data-rotate-y="450">
+  <div id="booltype-or-not" class="step all" data-x="1000" data-y="2000" data-rotate-y="450" data-bg="ss">
     <pre><code class="scala">
 sealed trait BoolType {
   type Not &lt;: BoolType
@@ -145,10 +145,10 @@ sealed trait BoolType {
     </code></pre>
   </div>
 
-  <div id="val-vs-type-bool-or-not" class="step" data-x="850" data-y="2000" data-z="300" data-scale="1.5" data-rotate-y="450">
+  <div id="val-vs-type-bool-or-not" class="step" data-x="850" data-y="2000" data-z="300" data-scale="1.5" data-rotate-y="450" data-bg="sc">
   </div>
 
-  <div id="truetype-or-not" class="step all" data-y="3000" data-rotate-y="540">
+  <div id="truetype-or-not" class="step all" data-y="3000" data-rotate-y="540" data-bg="ss">
     <pre><code class="scala">
 sealed trait TrueType extends BoolType {
   override type Not = FalseType
@@ -157,10 +157,10 @@ sealed trait TrueType extends BoolType {
     </code></pre>
   </div>
 
-  <div id="val-vs-type-true-or-not" class="step" data-x="400" data-y="3000" data-scale="1.5" data-rotate-y="540">
+  <div id="val-vs-type-true-or-not" class="step" data-x="400" data-y="3000" data-scale="1.5" data-rotate-y="540" data-bg="sc">
   </div>
 
-  <div id="falsetype-or-not" class="step all" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630">
+  <div id="falsetype-or-not" class="step all" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630" data-bg="ss">
     <pre><code class="scala">
 sealed trait FalseType extends BoolType {
   override type Not = TrueType
@@ -169,7 +169,7 @@ sealed trait FalseType extends BoolType {
     </code> </pre>
   </div>
 
-  <div id="val-vs-type-false-or-not" class="step" data-x="850" data-y="4000" data-scale="1.5" data-rotate-y="630">
+  <div id="val-vs-type-false-or-not" class="step" data-x="850" data-y="4000" data-scale="1.5" data-rotate-y="630" data-bg="sc">
   </div>
 
     <!--

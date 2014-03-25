@@ -84,6 +84,26 @@
     var toNumber = function (numeric, fallback) {
         return isNaN(numeric) ? (fallback || 0) : Number(numeric);
     };
+
+    var toBg = function (bg) {
+      if(bg === "sc")
+        return {
+          transition: 'all 1s ease',
+          'background': "rgb(99, 174, 255)",
+          'background-image': "url('imgs/bg.png')",
+          'background-repeat': 'no-repeat',
+          'background-position': 'bottom'
+        };
+      else if(bg === "ss")
+        return {
+          transition: 'all 1s ease',
+          'background': "rgb(0, 40, 140)",
+          'background-image': "url('imgs/bgss.png')",
+          'background-repeat': 'no-repeat',
+          'background-position': 'bottom'
+        };
+      else return {};
+    };
     
     // `byId` returns element with given `id` - you probably have guessed that ;)
     var byId = function ( id ) {
@@ -309,7 +329,8 @@
                         z: toNumber(data.rotateZ || data.rotate)
                     },
                     scale: toNumber(data.scale, 1),
-                    el: el
+                    el: el,
+                    bg: toBg(data.bg)
                 };
             
             if ( !el.id ) {
@@ -507,6 +528,8 @@
                 transitionDuration: duration + "ms",
                 transitionDelay: (zoomin ? 0 : delay) + "ms"
             });
+
+            css(body, step.bg);
             
             // Here is a tricky part...
             //
