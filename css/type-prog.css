@@ -275,6 +275,7 @@ a:focus {
 
 #title h3 {
   padding-top: 50px;
+  padding-right: 50px;
   font-size: 40px;
   float: right;
   clear: right;
@@ -282,6 +283,7 @@ a:focus {
 
 #title h4 {
   font-size: 24px;
+  padding-right: 50px;
   float: right;
   clear: right;
 }
