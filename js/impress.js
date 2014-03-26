@@ -102,7 +102,22 @@
           'background-repeat': 'no-repeat',
           'background-position': 'bottom'
         };
-      else return {};
+      else if(bg == "sc-none")
+        return {
+          transition: 'all 1s ease',
+          'background': "rgb(99, 174, 255)",
+          'background-image': "url('imgs/bg-none.png')",
+          'background-repeat': 'no-repeat',
+          'background-position': 'bottom'
+        };
+      else if(bg == "ss-none")
+        return {
+          transition: 'all 1s ease',
+          'background': "rgb(0, 40, 140)",
+          'background-image': "url('imgs/bgss-none.png')",
+          'background-repeat': 'no-repeat',
+          'background-position': 'bottom'
+        };
     };
     
     // `byId` returns element with given `id` - you probably have guessed that ;)
