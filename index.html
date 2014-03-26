@@ -27,7 +27,7 @@
 
 <div id="impress">
 
-  <div id="title" class="step" data-x="-1000">
+  <div id="title" class="step" data-x="-1000" data-bg="sc">
     <h1>Type-Level Programming</h1>
     <h2>The Sub-space of Scala</h2>
     <h3><b>Joe Barnes</b></h3>
@@ -35,56 +35,50 @@
     <h4><i><a href="http://proseand.co.nz">prose :: and :: conz</a> </i></h4>
   </div>
 
-  <div id="subspace" class="step" data-x="-2000"  data-rotate="90">
+  <div id="subspace" class="step" data-x="-2000"  data-rotate="90" data-bg="sc">
     <p><i>Subspace?!?</i></p>
     <p><b>That sounds like math!</b></p>
   </div>
 
-  <div id="mario2" class="step mario" data-x="700">
+  <div id="mario2" class="step mario" data-x="700" data-bg="sc">
     <img src="imgs/Mario2.png">
     <span>Normal value programming</span>
   </div>
 
-  <div id="potion" class="step mario" data-x="1000" data-z="-300" data-rotate-y="90">
+  <div id="potion" class="step mario" data-x="1000" data-z="-300" data-rotate-y="90" data-bg="sc">
     <img src="imgs/Potion.png">
     <span>A flask of type programming!</span>
   </div>
 
-  <div id="door" class="step mario" data-x="700" data-z="-600" data-rotate-y="180">
+  <div id="door" class="step mario" data-x="700" data-z="-600" data-rotate-y="180" data-bg="sc">
     <img src="imgs/Door.png">
     <span>Where does this go?</span>
   </div>
 
-  <div id="in-subspace" class="step mario" data-x="400" data-z="-300" data-rotate-y="270">
+  <div id="in-subspace" class="step mario" data-x="400" data-z="-300" data-rotate-y="270" data-bg="sc">
     <img src="imgs/Subcon.png">
     <span>SUBSPACE!</span>
   </div>
 
-  <div id="val" class="step" data-x="2000"  data-y="-2000">
-    <pre><code class="scala">
+  <div id="val" class="step" data-x="2000"  data-y="-2000" data-bg="sc">
+    <pre><code class="scala"><div>
       val num = 1 + 2 + 3
-    </code></pre>
+    </div></code></pre>
   </div>
 
-  <div id="lazy-val" class="step" data-x="2000" data-y="-1500">
+  <div id="lazy-val" class="step" data-x="2000" data-y="-1750" data-z="500" data-bg="sc">
     <pre><code class="scala">
-      lazy val str = "a "+"string"
+      lazy val str = "a"+"b"+"c"
     </code></pre>
   </div>
 
-  <div id="def" class="step" data-x="2000" data-y="-1000">
+  <div id="def" class="step" data-x="2000" data-y="-1500" data-z="1000" data-bg="sc">
     <pre><code class="scala">
       def time = new java.util.Date
     </code></pre>
   </div>
 
-  <div id="var" class="step" data-x="2000" data-y="-500" data-bg="sc">
-    <pre><code class="scala">
-      var list = List("a", "b", "c")
-    </code></pre>
-  </div>
-
-  <div id="type" class="step" data-x="2000" data-bg="ss">
+  <div id="type" class="step" data-x="2000" data-y="-1250" data-z="1500" data-bg="ss">
     <pre><code class="scala">
       type MyMap = Map[Int, String]
     </code></pre>
@@ -98,7 +92,7 @@ case object FalseVal extends BoolVal
     </code></pre>
   </div>
 
-  <div id="boolval-or-not" class="step all" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90">
+  <div id="boolval-or-not" class="step all" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90" data-bg="sc">
     <pre><code class="scala">
 sealed trait BoolVal {
   def not:BoolVal
@@ -107,7 +101,7 @@ sealed trait BoolVal {
     </code></pre>
   </div>
 
-  <div id="trueval-or-not" class="step all" data-x="1300" data-y="3000" data-rotate-y="180">
+  <div id="trueval-or-not" class="step all" data-x="1300" data-y="3000" data-rotate-y="180" data-bg="sc">
     <pre><code class="scala">
 case object TrueVal extends BoolVal {
   override val not = FalseVal
