@@ -285,9 +285,56 @@ object/trait False_ extends Bool_ {
     </code> </pre>
   </div>
 
-  <div id="finite-types" class="step" data-x="2000" data-y="4000" data-z="1400" data-rotate-y="540" data-bg="sc">
+  <div id="use-bool" class="step" data-x="2000" data-y="4000" data-z="1400" data-rotate-y="540" data-bg="sc">
+    Now let's actually use our BoolType...
+  </div>
+
+  <div id="bool-type-specs1" class="step" data-x="1000" data-y="4000" data-z="2400" data-rotate-y="540" data-rotate="90" data-bg="ss">
+    <pre><code class="scala dark">
+// Compile to test
+object BoolTypeSpecs {
+  implicitly[TrueType  =:= TrueType]
+  implicitly[FalseType =:= FalseType]
+}
+    </code></pre>
+  </div>
+
+  <div id="negative-cases" class="step" data-x="2000" data-y="3000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="sc">
+    Ok, but what about negative test cases??
+  </div>
+
+  <div id="bool-type-specs2" class="step" data-x="3500" data-y="3000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+    <pre><code class="scala dark">
+import shapeless.test.illTyped
+// Compiles only if string DOESN'T compile
+illTyped("implicitly[TrueType  =:= FalseType]")
+illTyped("implicitly[FalseType =:= TrueType]")
+    </code></pre>
+  </div>
+
+  <div id="bool-type-specs3" class="step" data-x="3500" data-y="2000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+    <pre><code class="scala dark">
+implicitly[TrueType#Not  =:= FalseType]
+implicitly[FalseType#Not =:= TrueType]
+illTyped("implicitly[TrueType#Not  =:= TrueType]")
+illTyped("implicitly[FalseType#Not =:= FalseType]")
+    </code></pre>
+  </div>
+
+  <div id="bool-type-specs4" class="step" data-x="3500" data-y="1000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+    <pre><code class="scala dark">
+implicitly[TrueType#Or[TrueType] =:= TrueType]
+implicitly[TrueType#Or[FalseType] =:= TrueType]
+implicitly[FalseType#Or[TrueType] =:= TrueType]
+implicitly[FalseType#Or[FalseType] =:= FalseType]
+    </code></pre>
+  </div>
+
+  <div id="just-two-types" class="step" data-x="3500" data-z="2400" data-rotate-y="360" data-bg="sc">
     Well that was easy... It's just two types, really...
   </div>
+
+
 
     <!--
         
