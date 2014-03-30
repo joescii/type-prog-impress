@@ -162,7 +162,7 @@ a:focus {
 
 .step {
     position: relative;
-    width: 1200px;
+    width: 1200px;  /* Target resolution is 1366x768*/
     padding: 40px;
     margin: 20px auto;
 

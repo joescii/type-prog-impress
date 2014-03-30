@@ -83,7 +83,7 @@
     </code></pre>
   </div>
 
-  <div id="boolval" class="step all" data-y="1000" data-bg="sc">
+  <div id="boolval" class="step" data-y="1000" data-bg="sc">
     <pre><code class="scala light">
 sealed trait BoolVal
 case object TrueVal extends BoolVal
@@ -91,7 +91,7 @@ case object FalseVal extends BoolVal
     </code></pre>
   </div>
 
-  <div id="boolval-or-not" class="step all" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90" data-bg="sc">
+  <div id="boolval-or-not" class="step" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90" data-bg="sc">
     <pre><code class="scala light">
 sealed trait BoolVal {
   def not:BoolVal
@@ -100,7 +100,7 @@ sealed trait BoolVal {
     </code></pre>
   </div>
 
-  <div id="trueval-or-not" class="step all" data-x="1300" data-y="3000" data-rotate-y="180" data-bg="sc">
+  <div id="trueval-or-not" class="step" data-x="1300" data-y="3000" data-rotate-y="180" data-bg="sc">
     <pre><code class="scala light">
 case object TrueVal extends BoolVal {
   override val not = FalseVal
@@ -109,7 +109,7 @@ case object TrueVal extends BoolVal {
     </code></pre>
   </div>
 
-  <div id="falseval-or-not" class="step all" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270" data-bg="sc">
+  <div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270" data-bg="sc">
     <pre><code class="scala light">
 case object FalseVal extends BoolVal {
   override val not = TrueVal
@@ -118,7 +118,7 @@ case object FalseVal extends BoolVal {
     </code> </pre>
   </div>
 
-  <div id="booltype" class="step all" data-x="1300" data-y="1000" data-rotate-y="360" data-bg="ss">
+  <div id="booltype" class="step" data-x="1300" data-y="1000" data-rotate-y="360" data-bg="ss">
     <pre><code class="scala dark">
 sealed trait BoolType
 sealed trait TrueType extends BoolType
@@ -126,10 +126,40 @@ sealed trait FalseType extends BoolType
     </code></pre>
   </div>
 
-  <div id="val-vs-type" class="step" data-x="850" data-y="1000" data-scale="1.5" data-rotate-y="360" data-bg="sc">
+  <div id="val-vs-type1" class="step" data-x="2000" data-y="1000" data-z="-1000" data-rotate-y="360" data-bg="sc">
+    <pre><code class="scala light">
+sealed trait BoolVal
+sealed trait BoolType
+
+
+
+
+    </code></pre>
   </div>
 
-  <div id="booltype-or-not" class="step all" data-x="1000" data-y="2000" data-rotate-y="450" data-bg="ss">
+  <div id="val-vs-type2" class="step" data-x="2000" data-y="1000" data-z="-1000" data-rotate-y="360" data-bg="sc">
+    <pre><code class="scala light">
+
+
+case object  TrueVal  extends BoolVal
+sealed trait TrueType extends BoolType
+
+
+    </code></pre>
+  </div>
+
+  <div id="val-vs-type3" class="step" data-x="2000" data-y="1000" data-z="-1000" data-rotate-y="360" data-bg="sc">
+    <pre><code class="scala light">
+
+
+
+
+case object  FalseVal  extends BoolVal
+sealed trait FalseType extends BoolType
+    </code></pre>
+  </div>
+
+  <div id="booltype-or-not" class="step" data-x="1000" data-y="2000" data-rotate-y="450" data-bg="ss">
     <pre><code class="scala dark">
 sealed trait BoolType {
   type Not &lt;: BoolType
@@ -138,10 +168,40 @@ sealed trait BoolType {
     </code></pre>
   </div>
 
-  <div id="val-vs-type-bool-or-not" class="step" data-x="850" data-y="2000" data-z="300" data-scale="1.5" data-rotate-y="450" data-bg="sc">
+  <div id="val-vs-type-bool-or-not1" class="step" data-y="2000" data-z="-1000" data-rotate-y="450" data-bg="sc">
+    <pre><code class="scala light">
+sealed trait Bool_ {
+
+
+
+
+}
+    </code></pre>
   </div>
 
-  <div id="truetype-or-not" class="step all" data-y="3000" data-rotate-y="540" data-bg="ss">
+  <div id="val-vs-type-bool-or-not2" class="step" data-y="2000" data-z="-1000" data-rotate-y="450" data-bg="sc">
+    <pre><code class="scala light">
+
+  def  not  : BoolVal
+  type Not &lt;: BoolType
+
+
+
+    </code></pre>
+  </div>
+
+  <div id="val-vs-type-bool-or-not3" class="step" data-y="2000" data-z="-1000" data-rotate-y="450" data-bg="sc">
+    <pre><code class="scala light">
+
+
+
+  def  or(that  : BoolVal)   : BoolVal
+  type Or[That &lt;: BoolType] &lt;: BoolType
+
+    </code></pre>
+  </div>
+
+  <div id="truetype-or-not" class="step" data-y="3000" data-rotate-y="540" data-bg="ss">
     <pre><code class="scala dark">
 sealed trait TrueType extends BoolType {
   override type Not = FalseType
@@ -150,10 +210,40 @@ sealed trait TrueType extends BoolType {
     </code></pre>
   </div>
 
-  <div id="val-vs-type-true-or-not" class="step" data-x="400" data-y="3000" data-scale="1.5" data-rotate-y="540" data-bg="sc">
+  <div id="val-vs-type-true-or-not1" class="step" data-x="-1000" data-y="3000" data-z="1000" data-rotate-y="540" data-bg="sc">
+    <pre><code class="scala light">
+object/trait True_ extends Bool_ {
+
+
+
+
+}
+    </code></pre>
   </div>
 
-  <div id="falsetype-or-not" class="step all" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630" data-bg="ss">
+  <div id="val-vs-type-true-or-not2" class="step" data-x="-1000" data-y="3000" data-z="1000" data-rotate-y="540" data-bg="sc">
+    <pre><code class="scala light">
+
+  override val  not = FalseVal
+  override type Not = FalseType
+
+
+
+    </code></pre>
+  </div>
+
+  <div id="val-vs-type-true-or-not3" class="step" data-x="-1000" data-y="3000" data-z="1000" data-rotate-y="540" data-bg="sc">
+    <pre><code class="scala light">
+
+
+
+  override def  or(that  : BoolVal)  = TrueVal
+  override type Or[That &lt;: BoolType] = TrueType
+
+    </code></pre>
+  </div>
+
+  <div id="falsetype-or-not" class="step" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630" data-bg="ss">
     <pre><code class="scala dark">
 sealed trait FalseType extends BoolType {
   override type Not = TrueType
@@ -162,7 +252,41 @@ sealed trait FalseType extends BoolType {
     </code> </pre>
   </div>
 
-  <div id="val-vs-type-false-or-not" class="step" data-x="850" data-y="4000" data-scale="1.5" data-rotate-y="630" data-bg="sc">
+  <div id="val-vs-type-false-or-not1" class="step" data-x="2000" data-y="4000" data-z="1400" data-rotate-y="630" data-bg="sc">
+    <pre><code class="scala light">
+object/trait False_ extends Bool_ {
+
+
+
+
+}
+    </code> </pre>
+  </div>
+
+  <div id="val-vs-type-false-or-not2" class="step" data-x="2000" data-y="4000" data-z="1400" data-rotate-y="630" data-bg="sc">
+    <pre><code class="scala light">
+
+  override val  not = TrueVal
+  override type Not = TrueType
+
+
+
+    </code> </pre>
+  </div>
+
+  <div id="val-vs-type-false-or-not3" class="step" data-x="2000" data-y="4000" data-z="1400" data-rotate-y="630" data-bg="sc">
+    <pre><code class="scala light">
+
+
+
+  override def  or(that  : BoolVal)  = that
+  override type Or[That &lt;: BoolType] = That
+
+    </code> </pre>
+  </div>
+
+  <div id="finite-types" class="step" data-x="2000" data-y="4000" data-z="1400" data-rotate-y="540" data-bg="sc">
+    Well that was easy... It's just two types, really...
   </div>
 
     <!--
