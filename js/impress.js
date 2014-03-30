@@ -836,3 +836,16 @@
 //
 // I've learnt a lot when building impress.js and I hope this code and comments
 // will help somebody learn at least some part of it.
+
+(function ( document, window, $ ) {
+  'use strict';
+
+  document.addEventListener("keyup", function ( event ) {
+    if ( event.keyCode === 65 ) {
+      $('.all').toggleClass('active');
+      event.preventDefault();
+    }
+  }, false);
+
+
+})(document, window, jQuery);

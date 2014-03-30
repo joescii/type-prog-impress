@@ -305,6 +305,72 @@ code {
   float: left;
 }
 
+.scala {
+  font-family: monospace;
+}
+
+.scala .hljs-keyword {
+  font-weight: bold;
+}
+
+.scala .hljs-string {
+  font-style: italic;
+}
+
+.scala .hljs-comment {
+  font-style: italic;
+}
+
+.scala .hljs-inheritance {
+  font-weight: bold;
+}
+
+
+.scala.light .hljs-keyword {
+  color: blue;
+}
+
+.scala.light .hljs-number {
+  color: purple;
+}
+
+.scala.light .hljs-string {
+  color: green;
+}
+
+.scala.light .hljs-comment {
+  color: lightgray;
+}
+
+.scala.light .hljs-inheritance {
+  color: blue;
+}
+
+
+.scala.dark {
+  color: white;
+}
+
+.scala.dark .hljs-keyword {
+  color: deepskyblue;
+}
+
+.scala.dark .hljs-number {
+  color: mediumpurple;
+}
+
+.scala.dark .hljs-string {
+  color: lightgreen;
+}
+
+.scala.dark .hljs-comment {
+  color: lightgray;
+}
+
+.scala.dark .hljs-inheritance {
+  color: deepskyblue;
+}
+
 /*
     The last step is an overview.
     There is no content in it, so we make sure it's not visible because we want

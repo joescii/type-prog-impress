@@ -12,7 +12,6 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
     <link href="css/type-prog.css" rel="stylesheet" />
-    <link href="css/scala.css" rel="stylesheet" />
 
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -61,31 +60,31 @@
   </div>
 
   <div id="val" class="step" data-x="2000"  data-y="-3000" data-bg="sc">
-    <pre><code class="scala"><div>
+    <pre><code class="scala light"><div>
       val num = 1 + 2 + 3
     </div></code></pre>
   </div>
 
   <div id="lazy-val" class="step" data-x="2000" data-y="-2750" data-z="500" data-bg="sc">
-    <pre><code class="scala">
+    <pre><code class="scala light">
       lazy val str = "a"+"b"+"c"
     </code></pre>
   </div>
 
   <div id="def" class="step" data-x="2000" data-y="-2500" data-z="1000" data-bg="sc">
-    <pre><code class="scala">
+    <pre><code class="scala light">
       def time = new java.util.Date
     </code></pre>
   </div>
 
   <div id="type" class="step" data-x="2000" data-y="-2250" data-z="1500" data-bg="ss">
-    <pre><code class="scala">
+    <pre><code class="scala dark">
       type MyMap = Map[Int, String]
     </code></pre>
   </div>
 
   <div id="boolval" class="step all" data-y="1000" data-bg="sc">
-    <pre><code class="scala">
+    <pre><code class="scala light">
 sealed trait BoolVal
 case object TrueVal extends BoolVal
 case object FalseVal extends BoolVal
@@ -93,7 +92,7 @@ case object FalseVal extends BoolVal
   </div>
 
   <div id="boolval-or-not" class="step all" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90" data-bg="sc">
-    <pre><code class="scala">
+    <pre><code class="scala light">
 sealed trait BoolVal {
   def not:BoolVal
   def or(that:BoolVal):BoolVal
@@ -102,7 +101,7 @@ sealed trait BoolVal {
   </div>
 
   <div id="trueval-or-not" class="step all" data-x="1300" data-y="3000" data-rotate-y="180" data-bg="sc">
-    <pre><code class="scala">
+    <pre><code class="scala light">
 case object TrueVal extends BoolVal {
   override val not = FalseVal
   override def or(that:BoolVal) = TrueVal
@@ -111,7 +110,7 @@ case object TrueVal extends BoolVal {
   </div>
 
   <div id="falseval-or-not" class="step all" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270" data-bg="sc">
-    <pre><code class="scala">
+    <pre><code class="scala light">
 case object FalseVal extends BoolVal {
   override val not = TrueVal
   override def or(that:BoolVal) = that
@@ -120,7 +119,7 @@ case object FalseVal extends BoolVal {
   </div>
 
   <div id="booltype" class="step all" data-x="1300" data-y="1000" data-rotate-y="360" data-bg="ss">
-    <pre><code class="scala">
+    <pre><code class="scala dark">
 sealed trait BoolType
 sealed trait TrueType extends BoolType
 sealed trait FalseType extends BoolType
@@ -131,7 +130,7 @@ sealed trait FalseType extends BoolType
   </div>
 
   <div id="booltype-or-not" class="step all" data-x="1000" data-y="2000" data-rotate-y="450" data-bg="ss">
-    <pre><code class="scala">
+    <pre><code class="scala dark">
 sealed trait BoolType {
   type Not &lt;: BoolType
   type Or[That &lt;: BoolType] &lt;: BoolType
@@ -143,7 +142,7 @@ sealed trait BoolType {
   </div>
 
   <div id="truetype-or-not" class="step all" data-y="3000" data-rotate-y="540" data-bg="ss">
-    <pre><code class="scala">
+    <pre><code class="scala dark">
 sealed trait TrueType extends BoolType {
   override type Not = FalseType
   override type Or[That &lt;: BoolType] = TrueType
@@ -155,7 +154,7 @@ sealed trait TrueType extends BoolType {
   </div>
 
   <div id="falsetype-or-not" class="step all" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630" data-bg="ss">
-    <pre><code class="scala">
+    <pre><code class="scala dark">
 sealed trait FalseType extends BoolType {
   override type Not = TrueType
   override type Or[That &lt;: BoolType] = That
@@ -195,11 +194,10 @@ if ("ontouchstart" in document.documentElement) {
 }
 </script>
 
-<script src="js/impress.js"></script>
 <script src="js/highlight.min.js"></script>
 <script src="js/scala.min.js"></script>
 <script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/type-prog.js"></script>
+<script src="js/impress.js"></script>
 <script>impress().init();hljs.initHighlightingOnLoad();</script>
 
 </body>
