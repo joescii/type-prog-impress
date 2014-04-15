@@ -271,21 +271,21 @@ a:focus {
 #title h2 {
   font-size: 50px;
   font-style: italic;
+  height: 400px;
 }
 
-#title h3 {
-  padding-top: 50px;
-  padding-right: 50px;
-  font-size: 40px;
-  float: right;
-  clear: right;
+#joe-barnes .name {
+  width: 500px;
+  float: left;
 }
 
-#title h4 {
-  font-size: 24px;
-  padding-right: 50px;
-  float: right;
-  clear: right;
+#joe-barnes h1 {
+  font-weight: bold;
+}
+
+#joe-barnes ul {
+  width: 600px;
+  float: left;
 }
 
 .mario img {
