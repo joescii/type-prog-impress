@@ -115,7 +115,8 @@ sealed trait BoolVal {
     <pre><code class="scala light"><div class="centered">
 case object TrueVal extends BoolVal {
   override val not = FalseVal
-  override def or(that:BoolVal) = TrueVal
+  override def or(that:BoolVal) =
+    TrueVal
 }
     </div></code></pre>
   </div>
@@ -158,7 +159,8 @@ sealed trait BoolType {
     <pre><code class="scala dark"><div class="centered">
 sealed trait TrueType extends BoolType {
   override type Not = FalseType
-  override type Or[That &lt;: BoolType] = TrueType
+  override type Or[That &lt;: BoolType] =
+    TrueType
 }
     </div></code></pre>
   </div>
@@ -198,7 +200,7 @@ object BoolTypeSpecs {
     Ok, but what about negative test cases??
   </div>
 
-  <div id="bool-type-specs2" class="step" data-x="3500" data-y="4000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+  <div id="bool-type-specs2" class="step" data-x="4500" data-y="4000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 import shapeless.test.illTyped
 // Compiles only if string DOESN'T compile
@@ -207,7 +209,7 @@ illTyped("implicitly[FalseType =:= TrueType]")
     </div></code></pre>
   </div>
 
-  <div id="bool-type-specs3" class="step" data-x="3500" data-y="3000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+  <div id="bool-type-specs3" class="step" data-x="4500" data-y="3000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 implicitly[TrueType#Not  =:= FalseType]
 implicitly[FalseType#Not =:= TrueType]
@@ -216,7 +218,7 @@ illTyped("implicitly[FalseType#Not =:= FalseType]")
     </div></code></pre>
   </div>
 
-  <div id="bool-type-specs4" class="step" data-x="3500" data-y="2000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+  <div id="bool-type-specs4" class="step" data-x="4500" data-y="2000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 implicitly[TrueType#Or[TrueType] =:= TrueType]
 implicitly[TrueType#Or[FalseType] =:= TrueType]
@@ -225,11 +227,11 @@ implicitly[FalseType#Or[FalseType] =:= FalseType]
     </div></code></pre>
   </div>
 
-  <div id="just-two-types" class="step" data-x="3500" data-y="1000" data-z="2400" data-rotate-y="360" data-bg="sc">
+  <div id="just-two-types" class="step" data-x="4500" data-y="1000" data-z="2400" data-rotate-y="360" data-bg="sc">
     Well that was easy... It's just two types, really...
   </div>
 
-  <div id="IntVal" class="step" data-x="3500" data-y="1500" data-z="2400" data-rotate-y="360" data-bg="sc">
+  <div id="IntVal" class="step" data-x="4500" data-y="1500" data-z="2400" data-rotate-y="360" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait IntVal {
   def add(that:IntVal):IntVal
