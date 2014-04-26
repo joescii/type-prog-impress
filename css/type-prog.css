@@ -162,7 +162,7 @@ a:focus {
 
 .step {
     position: relative;
-    width: 1200px;  /* Target resolution is 1366x768*/
+    width: 1700px;  /* Target resolution is 1920x1080 */
     padding: 40px;
     margin: 20px auto;
 
@@ -175,6 +175,11 @@ a:focus {
     font-family: 'PT Serif', georgia, serif;
     font-size: 40px;
     line-height: 1.5;
+}
+
+.centered {
+  width: 50%;
+  margin: 0 auto;
 }
 
 /*
@@ -370,6 +375,32 @@ code {
 .scala.dark .hljs-inheritance {
   color: deepskyblue;
 }
+
+
+.scala.dark.light {
+  color: black;
+}
+
+.scala.dark.light .hljs-keyword {
+  color: blue;
+}
+
+.scala.dark.light .hljs-number {
+  color: purple;
+}
+
+.scala.dark.light .hljs-string {
+  color: green;
+}
+
+.scala.dark.light .hljs-comment {
+  color: lightgray;
+}
+
+.scala.dark.light .hljs-inheritance {
+  color: blue;
+}
+
 
 /*
     The last step is an overview.

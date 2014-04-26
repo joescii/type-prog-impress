@@ -758,6 +758,11 @@
                 
                 event.preventDefault();
             }
+
+            if ( event.keyCode === 65 ) {
+                $('.step').toggleClass('active');
+                $('.dark').toggleClass('light');
+            }
         }, false);
         
         // delegated handler for clicking on the links to presentation steps
