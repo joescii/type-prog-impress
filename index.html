@@ -307,7 +307,15 @@ case class IntListImpl(head:Int, tail:IntList)
     Compile time! (The lists are immutable)
   </div>
 
-  
+  <div id="IntList-compile-time" class="step" data-x="7000" data-y="3000" data-z="4400" data-rotate-y="270" data-rotate="-90" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+sealed trait IntList[Size &lt;: IntType]
+case object IntNil extends IntList[Int0]
+case class IntListImpl[TailSize &lt;: IntType]
+  (head:Int, tail:IntList) extends IntList
+    </div> </code> </pre>
+  </div>
+
 
     <!--
         
