@@ -227,26 +227,87 @@ implicitly[FalseType#Or[FalseType] =:= FalseType]
     </div></code></pre>
   </div>
 
-  <div id="just-two-types" class="step" data-x="4500" data-y="1000" data-z="2400" data-rotate-y="360" data-bg="sc">
+  <div id="just-two-types" class="step" data-x="4500" data-y="1500" data-z="2400" data-rotate-y="360" data-bg="sc">
     Well that was easy... It's just two types, really...
   </div>
 
-  <div id="IntVal" class="step" data-x="4500" data-y="1500" data-z="2400" data-rotate-y="360" data-bg="sc">
+  <div id="IntVal" class="step" data-x="4500" data-y="2500" data-z="2400" data-rotate-y="360" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait IntVal {
-  def add(that:IntVal):IntVal
+  def plus(that:IntVal):IntVal
 }
 case object Int0 extends IntVal {
-  override def add(that:IntVal) = that
+  override def plus(that:IntVal) = that
 }
 case class IntN(prev:IntVal) extends IntVal {
-  override def add(that:IntVal) =
-    IntN(prev add that)
+  override def plus(that:IntVal) =
+    IntN(prev plus that)
 }
     </div></code> </pre>
   </div>
 
+  <div id="IntType" class="step" data-x="6000" data-y="2500" data-z="2400" data-rotate-y="360" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+sealed trait IntType {
+  type plus[That &lt;: IntType] &lt;: IntType
+}
+sealed trait Int0 extends IntType {
+  override type plus[That &lt;: IntType] = That
+}
+sealed trait IntN[Prev &lt;: IntType] extends IntType {
+  override type plus[That &lt;: IntType] =
+    IntN[Prev#plus[That]]
+}
+    </div> </code> </pre>
+  </div>
 
+  <div id="IntType-tests" class="step" data-x="6000" data-y="4000" data-z="2400" data-rotate-y="360" data-rotate="90" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+type Int1 = IntN[Int0]
+type Int2 = IntN[Int1]
+type Int3 = IntN[Int2]
+
+implicitly[Int0 =:= Int0]
+illTyped("implicitly[Int0 =:= Int1]")
+
+implicitly[Int0#plus[Int1] =:= Int1]
+implicitly[Int1#plus[Int1] =:= Int2]
+implicitly[Int1#plus[Int2] =:= Int3]
+
+    </div> </code> </pre>
+  </div>
+
+  <div id="blah-blah" class="step" data-x="5000" data-y="4000" data-z="2400" data-rotate-y="360" data-rotate="90" data-bg="sc">
+    <div class="">
+      Types, types, and more types, blah, blah, blah.
+      What good is it??
+    </div>
+  </div>
+
+  <div id="IntList-runtime" class="step" data-x="7000" data-y="2500" data-z="2400" data-rotate-y="270" data-bg="sc">
+    <pre><code class="scala light"><div class="centered">
+sealed trait IntList {
+  def size:Int
+}
+case object IntNil extends IntList {
+  override val size = 0
+}
+case class IntListImpl(head:Int, tail:IntList)
+  extends IntList {
+  override val size = 1 + tail.size
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="when" class="step" data-x="7000" data-y="3000" data-z="2400" data-rotate-y="270" data-rotate="-90" data-bg="sc">
+    But <i>when</i> do we know the size?
+  </div>
+
+  <div id="compile-time" class="step dark" data-x="7000" data-y="3000" data-z="3400" data-rotate-y="270" data-rotate="-90" data-bg="ss">
+    Compile time! (The lists are immutable)
+  </div>
+
+  
 
     <!--
         
