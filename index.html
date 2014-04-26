@@ -345,6 +345,21 @@ implicitly[FalseType#Or[FalseType] =:= FalseType]
     Well that was easy... It's just two types, really...
   </div>
 
+  <div id="IntVal" class="step" data-x="3500" data-y="500" data-z="2400" data-rotate-y="360" data-bg="sc">
+    <pre><code class="scala light">
+sealed trait IntVal {
+  def add(that:IntVal):IntVal
+}
+case object Int0 extends IntVal {
+  override def add(that:IntVal) = that
+}
+case class IntN(prev:IntVal) extends IntVal {
+  override def add(that:IntVal) =
+    IntN(prev add that)
+}
+    </code> </pre>
+  </div>
+
 
 
     <!--
