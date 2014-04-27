@@ -372,8 +372,8 @@ case class IntListImpl[TailSize &lt;: IntType]
 
   <div id="IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="3700" data-rotate-y="270" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
-sealed trait IntList[Size &lt;: SizeType] {
-  def ::(head:Int):IntList[SizeN[Size]] =
+sealed trait IntList[Size &lt;: IntType] {
+  def ::(head:Int):IntList[IntN[Size]] =
     IntListImpl(head, this)
   def +(that:IntList[Size]):IntList[Size]
 }
@@ -388,6 +388,71 @@ sum should equal (4 :: 6 :: IntNil)
 // Screw IllegalArgument Exception.
 // This crap won't even compile!
 illTyped("(1 :: 2 :: IntNil) + (5 :: IntNil)")
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntNil-sum" class="step" data-x="7000" data-y="5500" data-z="3700" data-rotate-y="270" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+case object IntNil extends IntList[Int0] {
+  override def +(that:IntList[Int0]) = this
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntList-sum-compare" class="step" data-x="7000" data-y="5500" data-z="3000" data-rotate-y="270" data-scale="1.3" data-bg="sc">
+
+  </div>
+
+  <div id="IntListImpl-sum" class="step" data-x="7000" data-y="6500" data-z="3700" data-rotate-y="270" data-bg="ss">
+    <pre><code class="scala dark"><div class="">
+case class IntListImpl[TailSize &lt;: IntType]
+  (head:Int, tail:IntList[TailSize])
+  extends IntList[IntN[TailSize]] {
+  override def +(that:IntList[IntN[TailSize]]) = that match {
+    case IntListImpl(h, t) => (head + h) :: (tail + t)
+  }
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntList-def-concat" class="step" data-x="7000" data-y="6500" data-z="5500" data-rotate-y="90" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+sealed trait IntList[Size &lt;: SizeType] {
+  def ++[ThatSize &lt;: SizeType]
+    (that:IntList[ThatSize])
+    :IntList[Size#plus[ThatSize]]
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntNil-concat" class="step" data-x="7000" data-y="5500" data-z="5500" data-rotate-y="90" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+case object IntNil extends IntList[Size0] {
+  override def ++[ThatSize &lt;: SizeType]
+    (that:IntList[ThatSize]) = that
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntListImpl-concat" class="step" data-x="7000" data-y="5500" data-z="7000" data-rotate-y="90" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+case class IntListImpl[TailSize &lt: IntType]
+  (head:Int, tail:IntList[TailSize])
+  extends IntList[IntN[TailSize]] {
+
+  override def ++[ThatSize &lt;: SizeType]
+    (that:IntList[ThatSize]) =
+    IntListImpl(head, tail++that)
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntList-concat-specs" class="step" data-x="7000" data-y="4500" data-z="7000" data-rotate-y="90" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+val sum =
+  ((1 :: 2 :: IntNil) ++ (3 :: IntNil)) +
+  (4 :: 5 :: 6 :: IntNil)
+sum should equal (5 :: 7 :: 9 :: IntNil)
     </div> </code> </pre>
   </div>
 
