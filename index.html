@@ -94,7 +94,7 @@
     </div></code></pre>
   </div>
 
-  <div id="boolval" class="step" data-y="1000" data-bg="sc">
+  <div id="boolval" class="step" data-x="1000" data-y="1000" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait BoolVal
 case object TrueVal extends BoolVal
@@ -102,7 +102,7 @@ case object FalseVal extends BoolVal
     </div></code></pre>
   </div>
 
-  <div id="boolval-or-not" class="step" data-x="1000" data-y="2000" data-z="1000" data-rotate-y="90" data-bg="sc">
+  <div id="boolval-or-not" class="step" data-x="1000" data-y="2000" data-z="500" data-rotate-y="45" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait BoolVal {
   def not:BoolVal
@@ -111,7 +111,7 @@ sealed trait BoolVal {
     </div></code></pre>
   </div>
 
-  <div id="trueval-or-not" class="step" data-x="1300" data-y="3000" data-rotate-y="180" data-bg="sc">
+  <div id="trueval-or-not" class="step" data-x="1000" data-y="3000" data-z="0" data-rotate-y="90" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 case object TrueVal extends BoolVal {
   override val not = FalseVal
@@ -121,7 +121,7 @@ case object TrueVal extends BoolVal {
     </div></code></pre>
   </div>
 
-  <div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="-900" data-rotate-y="270" data-bg="sc">
+  <div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="500" data-rotate-y="135" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 case object FalseVal extends BoolVal {
   override val not = TrueVal
@@ -130,7 +130,7 @@ case object FalseVal extends BoolVal {
     </div></code> </pre>
   </div>
 
-  <div id="booltype" class="step" data-x="1300" data-y="1000" data-rotate-y="360" data-bg="ss">
+  <div id="booltype" class="step" data-x="2300" data-y="1000" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait BoolType
 sealed trait TrueType extends BoolType
@@ -138,11 +138,11 @@ sealed trait FalseType extends BoolType
     </div></code></pre>
   </div>
 
-  <div id="bool-compare" class="step" data-x="600" data-y="1000" data-rotate-y="360" data-scale="1.3" data-bg="sc">
+  <div id="bool-compare" class="step" data-x="1600" data-y="1000" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="booltype-or-not" class="step" data-x="1000" data-y="2000" data-rotate-y="450" data-bg="ss">
+  <div id="booltype-or-not" class="step" data-x="1750" data-y="2000" data-z="-250" data-rotate-y="45" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait BoolType {
   type Not &lt;: BoolType
@@ -151,11 +151,11 @@ sealed trait BoolType {
     </div></code></pre>
   </div>
 
-  <div id="or-not-compare" class="step" data-x="1000" data-y="2000" data-z="700" data-rotate-y="450" data-scale="1.3" data-bg="sc">
+  <div id="or-not-compare" class="step" data-x="1500" data-y="2000" data-z="250" data-rotate-y="45" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="truetype-or-not" class="step" data-y="3000" data-rotate-y="540" data-bg="ss">
+  <div id="truetype-or-not" class="step" data-x="1000" data-y="3000" data-z="-1000" data-rotate-y="90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait TrueType extends BoolType {
   override type Not = FalseType
@@ -165,11 +165,12 @@ sealed trait TrueType extends BoolType {
     </div></code></pre>
   </div>
 
-  <div id="true-compare" class="step" data-x="700" data-y="3000" data-rotate-y="540" data-scale="1.3" data-bg="sc">
+  <div id="true-compare" class="step" data-x="1000" data-y="3000" data-z="-500" data-rotate-y="90" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="falsetype-or-not" class="step" data-x="1000" data-y="4000" data-z="400" data-rotate-y="630" data-bg="ss">
+  <!--<div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="500" data-rotate-y="135" data-bg="sc">-->
+  <div id="falsetype-or-not" class="step" data-x="150" data-y="4000" data-z="-500" data-rotate-y="135" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait FalseType extends BoolType {
   override type Not = TrueType
@@ -178,11 +179,11 @@ sealed trait FalseType extends BoolType {
     </div></code> </pre>
   </div>
 
-  <div id="false-compare" class="step" data-x="1000" data-y="4000" data-z="-300" data-rotate-y="630" data-scale="1.3" data-bg="sc">
+  <div id="false-compare" class="step" data-x="1000" data-y="4000" data-z="-300" data-rotate-y="135" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="test-bool" class="step" data-x="2000" data-y="5000" data-z="1400" data-rotate-y="540" data-bg="sc">
+  <div id="test-bool" class="step" data-x="2000" data-y="5000" data-z="1400" data-rotate-y="180" data-bg="sc">
     But how can we test our BoolType??
   </div>
 
