@@ -284,7 +284,7 @@ implicitly[Int1#plus[Int2] =:= Int3]
     </div>
   </div>
 
-  <div id="IntList-runtime" class="step" data-x="7000" data-y="2500" data-z="2400" data-rotate-y="270" data-bg="sc">
+  <div id="unsafe-IntList" class="step" data-x="7000" data-y="2500" data-z="2400" data-rotate-y="270" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait IntList {
   def size:Int
@@ -299,15 +299,65 @@ case class IntListImpl(head:Int, tail:IntList)
     </div> </code> </pre>
   </div>
 
-  <div id="when" class="step" data-x="7000" data-y="3000" data-z="2400" data-rotate-y="270" data-rotate="-90" data-bg="sc">
-    But <i>when</i> do we know the size?
+  <div id="unsafe-IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="2400" data-rotate-y="270" data-bg="sc">
+    <pre><code class="scala light"><div class="centered">
+sealed trait IntList {
+  // Convenience list constructor
+  def ::(head:Int):IntList = IntListImpl(head, this)
+  // Vector addition
+  def +(that:IntList):IntList
+  def size:Int
+}
+    </div> </code> </pre>
   </div>
 
-  <div id="compile-time" class="step dark" data-x="7000" data-y="3000" data-z="3400" data-rotate-y="270" data-rotate="-90" data-bg="ss">
+  <div id="unsafe-IntList-specs" class="step" data-x="7000" data-y="4500" data-z="2400" data-rotate-y="270" data-bg="sc">
+    <pre><code class="scala light"><div class="centered">
+val sum = (1 :: 2 :: IntNil) + (3 :: 4 :: IntNil)
+sum should equal (4 :: 6 :: IntNil)
+
+intercept[IllegalArgumentException](
+  (1 :: 2 :: IntNil) + (5 :: IntNil)
+)
+    </div> </code> </pre>
+  </div>
+
+  <div id="unsafe-IntNil" class="step" data-x="7000" data-y="5500" data-z="2400" data-rotate-y="270" data-bg="sc">
+    <pre><code class="scala light"><div class="centered">
+case object IntNil extends IntList {
+  override def +(that:IntList) = {
+    require(that == IntNil)
+    this
+  }
+  override val size = 0
+}
+    </div> </code></pre>
+  </div>
+
+  <div id="unsafe-IntListImpl" class="step" data-x="7000" data-y="6500" data-z="2400" data-rotate-y="270" data-bg="sc">
+    <pre><code class="scala light"><div class="">
+case class IntListImpl(head:Int, tail:IntList)
+  extends IntList {
+  override def +(that:IntList) = {
+    require(that.size == size)
+    other match {
+      case IntListImpl(h, t) => (head + h) :: (tail + t)
+    }
+  }
+  override val size = 1 + tail.size
+}
+    </div> </code></pre>
+  </div>
+
+  <div id="when" class="step" data-x="7000" data-y="7500" data-z="2400" data-rotate-y="270" data-rotate="-90" data-bg="sc">
+    This implementation validates size at runtime. But <i>when</i> do we know the size?
+  </div>
+
+  <div id="compile-time" class="step dark" data-x="7000" data-y="7500" data-z="3000" data-rotate-y="90" data-rotate="-90" data-bg="ss">
     Compile time! (The lists are immutable)
   </div>
 
-  <div id="IntList-compile-time" class="step" data-x="7000" data-y="3000" data-z="4400" data-rotate-y="270" data-rotate="-90" data-bg="ss">
+  <div id="IntList" class="step" data-x="7000" data-y="2500" data-z="3700" data-rotate-y="270" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait IntList[Size &lt;: IntType]
 case object IntNil extends IntList[Int0]
@@ -316,22 +366,46 @@ case class IntListImpl[TailSize &lt;: IntType]
     </div> </code> </pre>
   </div>
 
+  <!--<div id="IntList-compare" class="step" data-x="7000" data-y="2500" data-z="3000" data-rotate-y="270" data-scale="1.3" data-bg="sc">-->
 
-    <!--
-        
-        So to make a summary of all the possible attributes used to position presentation steps, we have:
-        
-        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
-            the canvas in pixels; their default value is 0;
-        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
-            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
-            are exactly the same;
-        * `data-scale` - defines the scale of step element; default value is 1
-        
-        These values are used by impress.js in CSS transformation functions, so for more information consult
-        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
-        
-    -->
+  <!--</div>-->
+
+  <div id="IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="3700" data-rotate-y="270" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+sealed trait IntList[Size &lt;: SizeType] {
+  def ::(head:Int):IntList[SizeN[Size]] =
+    IntListImpl(head, this)
+  def +(that:IntList[Size]):IntList[Size]
+}
+    </div> </code> </pre>
+  </div>
+
+  <div id="IntList-specs" class="step" data-x="7000" data-y="4500" data-z="3700" data-rotate-y="270" data-bg="ss">
+    <pre><code class="scala dark"><div class="centered">
+val sum = (1 :: 2 :: IntNil) + (3 :: 4 :: IntNil)
+sum should equal (4 :: 6 :: IntNil)
+
+// Screw IllegalArgument Exception.
+// This crap won't even compile!
+illTyped("(1 :: 2 :: IntNil) + (5 :: IntNil)")
+    </div> </code> </pre>
+  </div>
+
+  <!--
+
+      So to make a summary of all the possible attributes used to position presentation steps, we have:
+
+      * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
+          the canvas in pixels; their default value is 0;
+      * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
+          the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+          are exactly the same;
+      * `data-scale` - defines the scale of step element; default value is 1
+
+      These values are used by impress.js in CSS transformation functions, so for more information consult
+      CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+
+  -->
     <!--<div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">-->
     <!--</div>-->
 
