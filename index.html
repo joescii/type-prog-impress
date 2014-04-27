@@ -187,7 +187,7 @@ sealed trait FalseType extends BoolType {
     But how can we test our BoolType??
   </div>
 
-  <div id="bool-type-specs1" class="step" data-x="1000" data-y="5000" data-z="2400" data-rotate-y="540" data-rotate="90" data-bg="ss">
+  <div id="bool-type-specs1" class="step" data-x="1000" data-y="5000" data-z="2400" data-rotate-y="180" data-rotate="90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 // Compile to test
 object BoolTypeSpecs {
@@ -197,11 +197,11 @@ object BoolTypeSpecs {
     </div></code></pre>
   </div>
 
-  <div id="negative-cases" class="step" data-x="2000" data-y="4000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="sc">
+  <div id="negative-cases" class="step" data-x="2000" data-y="4000" data-z="2400" data-rotate-y="180" data-rotate="180" data-bg="sc">
     Ok, but what about negative test cases??
   </div>
 
-  <div id="bool-type-specs2" class="step" data-x="4500" data-y="4000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+  <div id="bool-type-specs2" class="step" data-x="4500" data-y="4000" data-z="2400" data-rotate-y="180" data-rotate="180" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 import shapeless.test.illTyped
 // Compiles only if string DOESN'T compile
@@ -210,7 +210,7 @@ illTyped("implicitly[FalseType =:= TrueType]")
     </div></code></pre>
   </div>
 
-  <div id="bool-type-specs3" class="step" data-x="4500" data-y="3000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+  <div id="bool-type-specs3" class="step" data-x="4500" data-y="3000" data-z="2400" data-rotate-y="180" data-rotate="180" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 implicitly[TrueType#Not  =:= FalseType]
 implicitly[FalseType#Not =:= TrueType]
@@ -219,7 +219,7 @@ illTyped("implicitly[FalseType#Not =:= FalseType]")
     </div></code></pre>
   </div>
 
-  <div id="bool-type-specs4" class="step" data-x="4500" data-y="2000" data-z="2400" data-rotate-y="540" data-rotate="180" data-bg="ss">
+  <div id="bool-type-specs4" class="step" data-x="4500" data-y="2000" data-z="2400" data-rotate-y="180" data-rotate="180" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 implicitly[TrueType#Or[TrueType] =:= TrueType]
 implicitly[TrueType#Or[FalseType] =:= TrueType]
@@ -228,11 +228,11 @@ implicitly[FalseType#Or[FalseType] =:= FalseType]
     </div></code></pre>
   </div>
 
-  <div id="just-two-types" class="step" data-x="4500" data-y="1500" data-z="2400" data-rotate-y="360" data-bg="sc">
+  <div id="just-two-types" class="step" data-x="4500" data-y="1500" data-z="2400" data-bg="sc">
     Well that was easy... It's just two types, really...
   </div>
 
-  <div id="IntVal" class="step" data-x="4500" data-y="2500" data-z="2400" data-rotate-y="360" data-bg="sc">
+  <div id="IntVal" class="step" data-x="4500" data-y="2500" data-z="2400" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait IntVal {
   def plus(that:IntVal):IntVal
@@ -247,7 +247,7 @@ case class IntN(prev:IntVal) extends IntVal {
     </div></code> </pre>
   </div>
 
-  <div id="IntType" class="step" data-x="6000" data-y="2500" data-z="2400" data-rotate-y="360" data-bg="ss">
+  <div id="IntType" class="step" data-x="6000" data-y="2500" data-z="2400" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait IntType {
   type plus[That &lt;: IntType] &lt;: IntType
@@ -262,7 +262,7 @@ sealed trait IntN[Prev &lt;: IntType] extends IntType {
     </div> </code> </pre>
   </div>
 
-  <div id="IntType-tests" class="step" data-x="6000" data-y="4000" data-z="2400" data-rotate-y="360" data-rotate="90" data-bg="ss">
+  <div id="IntType-tests" class="step" data-x="6000" data-y="4000" data-z="2400" data-rotate="90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 type Int1 = IntN[Int0]
 type Int2 = IntN[Int1]
@@ -278,14 +278,14 @@ implicitly[Int1#plus[Int2] =:= Int3]
     </div> </code> </pre>
   </div>
 
-  <div id="blah-blah" class="step" data-x="5000" data-y="4000" data-z="2400" data-rotate-y="360" data-rotate="90" data-bg="sc">
+  <div id="blah-blah" class="step" data-x="5000" data-y="4000" data-z="2400" data-rotate="90" data-bg="sc">
     <div class="">
       Types, types, and more types, blah, blah, blah.
       What good is it??
     </div>
   </div>
 
-  <div id="unsafe-IntList" class="step" data-x="7000" data-y="2500" data-z="2400" data-rotate-y="270" data-bg="sc">
+  <div id="unsafe-IntList" class="step" data-x="7000" data-y="2500" data-z="2400" data-rotate-y="-90" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait IntList {
   def size:Int
@@ -300,7 +300,7 @@ case class IntListImpl(head:Int, tail:IntList)
     </div> </code> </pre>
   </div>
 
-  <div id="unsafe-IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="2400" data-rotate-y="270" data-bg="sc">
+  <div id="unsafe-IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="2400" data-rotate-y="-90" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 sealed trait IntList {
   // Convenience list constructor
@@ -312,7 +312,7 @@ sealed trait IntList {
     </div> </code> </pre>
   </div>
 
-  <div id="unsafe-IntList-specs" class="step" data-x="7000" data-y="4500" data-z="2400" data-rotate-y="270" data-bg="sc">
+  <div id="unsafe-IntList-specs" class="step" data-x="7000" data-y="4500" data-z="2400" data-rotate-y="-90" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 val sum = (1 :: 2 :: IntNil) + (3 :: 4 :: IntNil)
 sum should equal (4 :: 6 :: IntNil)
@@ -323,7 +323,7 @@ intercept[IllegalArgumentException](
     </div> </code> </pre>
   </div>
 
-  <div id="unsafe-IntNil" class="step" data-x="7000" data-y="5500" data-z="2400" data-rotate-y="270" data-bg="sc">
+  <div id="unsafe-IntNil" class="step" data-x="7000" data-y="5500" data-z="2400" data-rotate-y="-90" data-bg="sc">
     <pre><code class="scala light"><div class="centered">
 case object IntNil extends IntList {
   override def +(that:IntList) = {
@@ -335,7 +335,7 @@ case object IntNil extends IntList {
     </div> </code></pre>
   </div>
 
-  <div id="unsafe-IntListImpl" class="step" data-x="7000" data-y="6500" data-z="2400" data-rotate-y="270" data-bg="sc">
+  <div id="unsafe-IntListImpl" class="step" data-x="7000" data-y="6500" data-z="2400" data-rotate-y="-90" data-bg="sc">
     <pre><code class="scala light"><div class="">
 case class IntListImpl(head:Int, tail:IntList)
   extends IntList {
@@ -350,7 +350,7 @@ case class IntListImpl(head:Int, tail:IntList)
     </div> </code></pre>
   </div>
 
-  <div id="when" class="step" data-x="7000" data-y="7500" data-z="2400" data-rotate-y="270" data-rotate="-90" data-bg="sc">
+  <div id="when" class="step" data-x="7000" data-y="7500" data-z="2400" data-rotate-y="-90" data-rotate="-90" data-bg="sc">
     This implementation validates size at runtime. But <i>when</i> do we know the size?
   </div>
 
@@ -358,7 +358,7 @@ case class IntListImpl(head:Int, tail:IntList)
     Compile time! (The lists are immutable)
   </div>
 
-  <div id="IntList" class="step" data-x="7000" data-y="2500" data-z="3700" data-rotate-y="270" data-bg="ss">
+  <div id="IntList" class="step" data-x="7000" data-y="2500" data-z="3700" data-rotate-y="-90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait IntList[Size &lt;: IntType]
 case object IntNil extends IntList[Int0]
@@ -367,11 +367,11 @@ case class IntListImpl[TailSize &lt;: IntType]
     </div> </code> </pre>
   </div>
 
-  <!--<div id="IntList-compare" class="step" data-x="7000" data-y="2500" data-z="3000" data-rotate-y="270" data-scale="1.3" data-bg="sc">-->
+  <!--<div id="IntList-compare" class="step" data-x="7000" data-y="2500" data-z="3000" data-rotate-y="-90" data-scale="1.3" data-bg="sc">-->
 
   <!--</div>-->
 
-  <div id="IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="3700" data-rotate-y="270" data-bg="ss">
+  <div id="IntList-def-sum" class="step" data-x="7000" data-y="3500" data-z="3700" data-rotate-y="-90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait IntList[Size &lt;: IntType] {
   def ::(head:Int):IntList[IntN[Size]] =
@@ -381,7 +381,7 @@ sealed trait IntList[Size &lt;: IntType] {
     </div> </code> </pre>
   </div>
 
-  <div id="IntList-specs" class="step" data-x="7000" data-y="4500" data-z="3700" data-rotate-y="270" data-bg="ss">
+  <div id="IntList-specs" class="step" data-x="7000" data-y="4500" data-z="3700" data-rotate-y="-90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 val sum = (1 :: 2 :: IntNil) + (3 :: 4 :: IntNil)
 sum should equal (4 :: 6 :: IntNil)
@@ -392,7 +392,7 @@ illTyped("(1 :: 2 :: IntNil) + (5 :: IntNil)")
     </div> </code> </pre>
   </div>
 
-  <div id="IntNil-sum" class="step" data-x="7000" data-y="5500" data-z="3700" data-rotate-y="270" data-bg="ss">
+  <div id="IntNil-sum" class="step" data-x="7000" data-y="5500" data-z="3700" data-rotate-y="-90" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 case object IntNil extends IntList[Int0] {
   override def +(that:IntList[Int0]) = this
@@ -400,11 +400,11 @@ case object IntNil extends IntList[Int0] {
     </div> </code> </pre>
   </div>
 
-  <div id="IntList-sum-compare" class="step" data-x="7000" data-y="5500" data-z="3000" data-rotate-y="270" data-scale="1.3" data-bg="sc">
+  <div id="IntList-sum-compare" class="step" data-x="7000" data-y="5500" data-z="3000" data-rotate-y="-90" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="IntListImpl-sum" class="step" data-x="7000" data-y="6500" data-z="3700" data-rotate-y="270" data-bg="ss">
+  <div id="IntListImpl-sum" class="step" data-x="7000" data-y="6500" data-z="3700" data-rotate-y="-90" data-bg="ss">
     <pre><code class="scala dark"><div class="">
 case class IntListImpl[TailSize &lt;: IntType]
   (head:Int, tail:IntList[TailSize])
