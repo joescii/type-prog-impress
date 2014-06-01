@@ -252,6 +252,21 @@ case class IntN(prev:IntVal) extends IntVal {
     </div></code> </pre>
   </div>
 
+  <div id="IntVal-usage" class="step" data-x="4500" data-y="3500" data-z="2400" data-bg="sc">
+    <pre><code class="scala light"><div class="centered">
+val int1 = IntN(Int0)
+val int2 = IntN(int1)
+val int3 = IntN(int2)
+
+Int0 should equal (Int0)
+Int0 should not equal (int1)
+
+(Int0 plus int1) should equal (int1)
+(int1 plus int1) should equal (int2)
+(int1 plus int2) should equal (int3)
+    </div></code> </pre>
+  </div>
+
   <div id="IntType" class="step" data-x="6000" data-y="2500" data-z="2400" data-bg="ss">
     <pre><code class="scala dark"><div class="centered">
 sealed trait IntType {
