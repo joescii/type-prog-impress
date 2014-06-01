@@ -314,7 +314,7 @@ case object IntNil extends IntList {
   override val size = 0
 }
 case class IntListImpl(head:Int, tail:IntList)
-  extends IntList {
+extends IntList {
   override val size = 1 + tail.size
 }
     </div> </code> </pre>
@@ -358,10 +358,10 @@ case object IntNil extends IntList {
   <div id="unsafe-IntListImpl" class="step" data-x="7000" data-y="6500" data-z="2400" data-rotate-y="-90" data-bg="sc">
     <pre><code class="scala light"><div class="">
 case class IntListImpl(head:Int, tail:IntList)
-  extends IntList {
+extends IntList {
   override def +(that:IntList) = {
     require(that.size == size)
-    other match {
+    that match {
       case IntListImpl(h, t) => (head + h) :: (tail + t)
     }
   }
