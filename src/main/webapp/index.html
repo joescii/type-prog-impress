@@ -122,89 +122,40 @@
     <div>Let's compare values to types with the simplest domain ever</div>
   </div>
 
-  <div id="boolval" class="step" data-x="1000" data-y="1000" data-bg="sc">
-    <pre><code class="scala light"><div class="centered">
-sealed trait BoolVal
-case object TrueVal extends BoolVal
-case object FalseVal extends BoolVal
-    </div></code></pre>
+  <div id="boolval-declaration" class="step" data-x="1000" data-y="1000" data-bg="sc" data-lift="Scala?src=BoolValDecl">
   </div>
 
-  <div id="boolval-or-not" class="step" data-x="1000" data-y="2000" data-z="500" data-rotate-y="45" data-bg="sc">
-    <pre><code class="scala light"><div class="centered">
-sealed trait BoolVal {
-  def not:BoolVal
-  def or(that:BoolVal):BoolVal
-}
-    </div></code></pre>
+  <div id="boolval-body" class="step" data-x="1000" data-y="2000" data-z="500" data-rotate-y="45" data-bg="sc" data-lift="Scala?src=BoolValBody">
   </div>
 
-  <div id="trueval-or-not" class="step" data-x="1000" data-y="3000" data-z="0" data-rotate-y="90" data-bg="sc">
-    <pre><code class="scala light"><div class="centered">
-case object TrueVal extends BoolVal {
-  override val not = FalseVal
-  override def or(that:BoolVal) =
-    TrueVal
-}
-    </div></code></pre>
+  <div id="trueval" class="step" data-x="1000" data-y="3000" data-z="0" data-rotate-y="90" data-bg="sc" data-lift="Scala?src=TrueVal">
   </div>
 
-  <div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="500" data-rotate-y="135" data-bg="sc">
-    <pre><code class="scala light"><div class="centered">
-case object FalseVal extends BoolVal {
-  override val not = TrueVal
-  override def or(that:BoolVal) = that
-}
-    </div></code> </pre>
+  <div id="falseval" class="step" data-x="1000" data-y="4000" data-z="500" data-rotate-y="135" data-bg="sc" data-lift="Scala?src=FalseVal">
   </div>
 
-  <div id="booltype" class="step" data-x="2300" data-y="1000" data-bg="ss">
-    <pre><code class="scala dark"><div class="centered">
-sealed trait BoolType
-sealed trait TrueType extends BoolType
-sealed trait FalseType extends BoolType
-    </div></code></pre>
+  <div id="booltype-decl" class="step" data-x="2300" data-y="1000" data-bg="ss" data-lift="Scala?src=BoolTypeDecl">
   </div>
 
   <div id="bool-compare" class="step" data-x="1600" data-y="1000" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="booltype-or-not" class="step" data-x="1750" data-y="2000" data-z="-250" data-rotate-y="45" data-bg="ss">
-    <pre><code class="scala dark"><div class="centered">
-sealed trait BoolType {
-  type Not &lt;: BoolType
-  type Or[That &lt;: BoolType] &lt;: BoolType
-}
-    </div></code></pre>
+  <div id="booltype-body" class="step" data-x="1750" data-y="2000" data-z="-250" data-rotate-y="45" data-bg="ss" data-lift="Scala?src=BoolTypeBody">
   </div>
 
   <div id="or-not-compare" class="step" data-x="1500" data-y="2000" data-z="250" data-rotate-y="45" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <div id="truetype-or-not" class="step" data-x="1000" data-y="3000" data-z="-1000" data-rotate-y="90" data-bg="ss">
-    <pre><code class="scala dark"><div class="centered">
-sealed trait TrueType extends BoolType {
-  override type Not = FalseType
-  override type Or[That &lt;: BoolType] =
-    TrueType
-}
-    </div></code></pre>
+  <div id="truetype" class="step" data-x="1000" data-y="3000" data-z="-1000" data-rotate-y="90" data-bg="ss" data-lift="Scala?src=TrueType">
   </div>
 
   <div id="true-compare" class="step" data-x="1000" data-y="3000" data-z="-500" data-rotate-y="90" data-scale="1.3" data-bg="sc">
 
   </div>
 
-  <!--<div id="falseval-or-not" class="step" data-x="1000" data-y="4000" data-z="500" data-rotate-y="135" data-bg="sc">-->
-  <div id="falsetype-or-not" class="step" data-x="150" data-y="4000" data-z="-500" data-rotate-y="135" data-bg="ss">
-    <pre><code class="scala dark"><div class="centered">
-sealed trait FalseType extends BoolType {
-  override type Not = TrueType
-  override type Or[That &lt;: BoolType] = That
-}
-    </div></code> </pre>
+  <div id="falsetype" class="step" data-x="150" data-y="4000" data-z="-500" data-rotate-y="135" data-bg="ss" data-lift="Scala?src=FalseType">
   </div>
 
   <div id="false-compare" class="step" data-x="575" data-y="4000" data-z="0" data-rotate-y="135" data-scale="1.3" data-bg="sc">
