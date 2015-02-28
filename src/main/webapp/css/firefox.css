@@ -1,0 +1,8 @@
+div.zebra pre:nth-of-type(odd) {
+  background: rgb(99, 174, 255);
+}
+
+div.zebra pre:nth-of-type(even) {
+  background: rgb(0, 40, 140);
+}
+

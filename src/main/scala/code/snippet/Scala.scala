@@ -12,12 +12,6 @@ object Scala {
   } yield { code })
     .openOr("// Source not found!!!")
 
-  private def html(src:String, bg:String) = <pre>
-    <code class={s"scala $bg"}>
-      <div class="centered">{src}</div>
-    </code>
-  </pre>
-
   private def append(html:NodeSeq) = "* *+" #> html
 
   def code(in:NodeSeq):NodeSeq = {
@@ -27,6 +21,30 @@ object Scala {
       .map(bg => if(bg contains "sc") "light" else "dark")
       .headOption.getOrElse("light")
 
-    append(html(src("src"), bg))(in)
+    val html = <pre>
+      <code class={s"scala $bg"}>
+        <div class="centered">{src("src")}</div>
+      </code>
+    </pre>
+
+    append(html)(in)
+  }
+
+  private val nl = System.getProperty("line.separator")
+
+  def html(src:String, bg:String):NodeSeq = <pre>
+    <code class={s"scala $bg"}>
+      {src}
+    </code>
+  </pre>
+
+  def diff = {
+    val src1 = src("src1").split(nl).toList
+    val src2 = src("src2").split(nl).toList
+    val lines:NodeSeq = src1.zip(src2)
+      .map { case (s1, s2) => html(s1, "light") ++ html(s2, "dark") }
+      .reduce(_ ++ _) ++ html("", "light") ++ html("", "dark")
+
+    append(<div class="centered zebra">{lines}</div>)
   }
 }

@@ -1,0 +1,6 @@
+[source,scala]
+----
+def sayHello() = println("Hello World!")
+sayHello()
+"hello!"
+----

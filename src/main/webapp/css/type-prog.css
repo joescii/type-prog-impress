@@ -318,6 +318,19 @@ code {
   float: left;
 }
 
+div.zebra {
+  width: auto;
+  height: auto;
+}
+
+.zebra pre {
+  height: 60px;
+}
+
+.zebra code {
+  height: 60px;
+}
+
 .scala {
   font-family: monospace;
 }
@@ -733,8 +746,4 @@ code {
   background-position: -160px 50px;
 }
 #slide-controls .forward.enabled {
-  background-position: -160px 0px;
-}
-#slide-controls .forward.enabled:active {
-  background-position: -160px -52px;
-}
+  backgro
