@@ -12,7 +12,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
     <link href="css/type-prog.css" rel="stylesheet" />
-
+ 
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 </head>
@@ -508,6 +508,8 @@ sum should equal (5 :: 7 :: 9 :: IntNil)
   <div id="concerns" class="step" data-x="6750" data-y="4500" data-z="2250" data-bg="sc">
     Concerns?
   </div>
+</div>
+<div data-lift="Host.ifNotLocal"><div data-lift="embed?what=slide-controls"></div></div>
 
   <!--
 
@@ -527,8 +529,8 @@ sum should equal (5 :: 7 :: 9 :: IntNil)
     <!--<div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">-->
     <!--</div>-->
 
-</div>
 
+<div data-lift="Host.ifLocal">
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
@@ -537,12 +539,20 @@ if ("ontouchstart" in document.documentElement) {
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
 </script>
+</div>
 
 <script src="js/highlight.min.js"></script>
 <script src="js/scala.min.js"></script>
-<script src="js/jquery-1.11.0.min.js"></script>
+<script id="jquery" src="/classpath/jquery.js" type="text/javascript"></script>
 <script src="js/impress.js"></script>
-<script>impress().init();hljs.initHighlightingOnLoad();</script>
+<div data-lift="Host.ifNotLocal">
+  <div data-lift="comet?type=PresentationComet"></div>
+  <div data-lift="PresentationState"></div>
+</div>
+<script data-lift="Host.ifNotLocal" src="js/impress-client.js"></script>
+<script data-lift="Presenter"></script>
+<script data-lift="Host.ifLocal" src="js/impress-presenter.js"></script>
+<script>impress().init();</script>
 
 </body>
 </html>

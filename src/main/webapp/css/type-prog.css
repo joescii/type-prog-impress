@@ -585,8 +585,8 @@ code {
 
     So use it wisely ... or don't use at all.
 */
-.impress-enabled          { pointer-events: none }
-.impress-enabled #impress { pointer-events: auto }
+/*.impress-enabled          { pointer-events: none }*/
+/*.impress-enabled #impress { pointer-events: auto }*/
 
 /*
     There is one funny thing I just realized.
@@ -604,3 +604,68 @@ code {
     Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it
     for you.
 */
+
+#slide-controls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 168px;
+  height: 56px;
+  display: block;
+  border: thin;
+  border-radius: 10px;
+  border: 2px solid;
+  padding: 5px;
+  margin: 5px;
+  background: rgb(240, 240, 240); /* Old browsers */
+}
+
+#slide-controls div {
+  width: 50px;
+  height: 50px;
+  background: url("/images/controls.png");
+  background-size: 264px 154px;
+  margin: 3px;
+  cursor: pointer;
+  float: left;
+}
+
+#slide-controls .back {
+  background-position: -214px 50px;
+}
+#slide-controls .back.enabled {
+  background-position: -214px 0;
+}
+#slide-controls .back.enabled:active {
+  background-position: -214px -52px;
+}
+
+#slide-controls .pause {
+  background-position: 0 50px;
+}
+#slide-controls .pause.enabled {
+  background-position: 0 0px;
+}
+#slide-controls .pause.enabled:active {
+  background-position: 0 -52px;
+}
+
+#slide-controls .play {
+  background-position: -108px 50px;
+}
+#slide-controls .play.enabled {
+  background-position: -108px 0px;
+}
+#slide-controls .play.enabled:active {
+  background-position: -108px -52px;
+}
+
+#slide-controls .forward {
+  background-position: -160px 50px;
+}
+#slide-controls .forward.enabled {
+  background-position: -160px 0px;
+}
+#slide-controls .forward.enabled:active {
+  background-position: -160px -52px;
+}
