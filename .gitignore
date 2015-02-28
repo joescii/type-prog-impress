@@ -1,1 +1,5 @@
 .idea/
+console.devmode.log
+target/
+project/project
+project/target
