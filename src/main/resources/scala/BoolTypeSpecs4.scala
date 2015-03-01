@@ -1,4 +1,4 @@
-implicitly[TrueType#Or[TrueType] =:= TrueType]
-implicitly[TrueType#Or[FalseType] =:= TrueType]
-implicitly[FalseType#Or[TrueType] =:= TrueType]
-implicitly[FalseType#Or[FalseType] =:= FalseType]
+import shapeless.test.illTyped
+// Compiles only if string DOESN'T compile
+illTyped("implicitly[TrueType  =:= FalseType]")
+illTyped("implicitly[FalseType =:= TrueType]")
