@@ -6,8 +6,8 @@ import net.liftweb.util.Helpers._
 import scala.xml.NodeSeq
 
 object Scala {
-  private def src(attr:String) = (for {
-    name <- S.attr(attr)
+  private def src = (for {
+    name <- S.attr("src")
     code <- LiftRules.loadResourceAsString(s"/scala/$name.scala")
   } yield { code })
     .openOr("// Source not found!!!")
@@ -23,7 +23,7 @@ object Scala {
 
     val html = <pre>
       <code class={s"scala $bg"}>
-        <div class="centered">{src("src")}</div>
+        <div class="centered">{src}</div>
       </code>
     </pre>
 
@@ -39,10 +39,11 @@ object Scala {
   </pre>
 
   def diff = {
-    val src1 = src("src1").split(nl).toList
-    val src2 = src("src2").split(nl).toList
-    val lines:NodeSeq = src1.zip(src2)
-      .map { case (s1, s2) => html(s1, "light") ++ html(s2, "dark") }
+    val lines:NodeSeq = src.split(nl).toList
+      .grouped(2)
+      .map { twoLines =>
+        html(twoLines(0), "light") ++
+        (if(twoLines.size > 1) html(twoLines(1), "dark") else NodeSeq.Empty) }
       .reduce(_ ++ _) ++ html("", "light") ++ html("", "dark")
 
     append(<div class="centered zebra">{lines}</div>)
