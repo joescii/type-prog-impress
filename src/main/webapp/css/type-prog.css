@@ -301,6 +301,47 @@ a:focus {
   float: left;
 }
 
+#cat-memes div:first-child {
+  margin-bottom: 600px;
+}
+
+.img-collection {
+  position: relative;
+}
+
+.img-collection img {
+  position: absolute;
+}
+
+.img-collection .appear1 {
+  top: -600px;
+  left: 0;
+}
+.img-collection .appear2 {
+  top: -500px;
+  left: 420px;
+}
+.img-collection .appear3 {
+  top: -550px;
+  left: 800px;
+}
+.img-collection .appear4 {
+  top: -700px;
+  left: 1150px;
+}
+.img-collection .appear5 {
+  top: -350px;
+  left: 1100px;
+}
+.img-collection .appear6 {
+  top: -250px;
+  left: 800px;
+}
+.img-collection .appear7 {
+  top: -300px;
+  left: -50px;
+}
+
 .mario img {
   display: block;
   margin-left: auto;
@@ -740,12 +781,4 @@ div.zebra {
 #slide-controls .play.enabled {
   background-position: -108px 0px;
 }
-#slide-controls .play.enabled:active {
-  background-position: -108px -52px;
-}
-
-#slide-controls .forward {
-  background-position: -160px 50px;
-}
-#slide-controls .forward.enabled {
-  backgro
+#slide-controls .play.enab 
