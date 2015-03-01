@@ -321,6 +321,8 @@ code {
 div.zebra {
   width: auto;
   height: auto;
+  border: rgb(0, 40, 140);
+  border-style: solid;
 }
 
 .zebra pre {
