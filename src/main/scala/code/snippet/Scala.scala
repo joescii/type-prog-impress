@@ -44,7 +44,9 @@ object Scala {
       .map { twoLines =>
         html(twoLines(0), "light") ++
         (if(twoLines.size > 1) html(twoLines(1), "dark") else NodeSeq.Empty) }
-      .reduce(_ ++ _) ++ html("", "light") ++ html("", "dark")
+      .reduce(_ ++ _)
+      // Things are a bit off in the browser, and these empty elements straighten out the stripes.
+      .++(html("", "light") ++ html("", "dark"))
 
     append(<div class="centered zebra">{lines}</div>)
   }
