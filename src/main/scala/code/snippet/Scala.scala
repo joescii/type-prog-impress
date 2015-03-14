@@ -23,7 +23,7 @@ object Scala {
 
     val html = <pre>
       <code class={s"scala $bg"}>
-        <div class="centered">{src}</div>
+        <div>{src}</div>
       </code>
     </pre>
 

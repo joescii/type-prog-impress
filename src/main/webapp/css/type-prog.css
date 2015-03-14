@@ -359,6 +359,10 @@ code {
   float: left;
 }
 
+code div {
+  padding-left: 50px;
+}
+
 div.zebra {
   width: auto;
   height: auto;
