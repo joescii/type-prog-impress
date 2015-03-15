@@ -785,4 +785,16 @@ div.zebra {
 #slide-controls .play.enabled {
   background-position: -108px 0px;
 }
-#slide-controls .play.enab 
+#slide-controls .play.enabled:active {
+  background-position: -108px -52px;
+}
+
+#slide-controls .forward {
+  background-position: -160px 50px;
+}
+#slide-controls .forward.enabled {
+  background-position: -160px 0px;
+}
+#slide-controls .forward.enabled:active {
+  background-position: -160px -52px;
+}
