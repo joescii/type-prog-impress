@@ -9,6 +9,8 @@ import net.liftweb.util.Helpers._
 import net.liftweb.util.{PassThru, ClearNodes}
 import code.comet.Presentation
 
+import scala.xml.NodeSeq
+
 /**
  * Created by jbarnes on 10/27/2014.
  */
@@ -19,6 +21,20 @@ object Presenter {
         Presentation ! id
       })))
   ) else ClearNodes
+
+  def login(in:NodeSeq):NodeSeq = {
+    for {
+      r <- S.request if r.post_? // make sure it's a post
+      p <- S.param("passcode")
+    } {
+      if(p == "PresenteraMetal!") {
+        model.Presenter(true)
+        S.redirectTo("/")
+      }
+    }
+
+    in
+  }
 }
 
 object IfPresenter {
