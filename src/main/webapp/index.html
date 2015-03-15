@@ -299,7 +299,7 @@
     Concerns?
   </div>
 </div>
-<div data-lift="Host.ifNotLocal"><div data-lift="embed?what=slide-controls"></div></div>
+<div data-lift="IfAudience"><div data-lift="embed?what=slide-controls"></div></div>
 
   <!--
 
@@ -320,7 +320,7 @@
     <!--</div>-->
 
 
-<div data-lift="Host.ifLocal">
+<div data-lift="IfPresenter">
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
@@ -335,13 +335,13 @@ if ("ontouchstart" in document.documentElement) {
 <script src="js/scala.min.js"></script>
 <script id="jquery" src="/classpath/jquery.js" type="text/javascript"></script>
 <script src="js/impress.js"></script>
-<div data-lift="Host.ifNotLocal">
+<div data-lift="IfAudience">
   <div data-lift="comet?type=PresentationComet"></div>
   <div data-lift="PresentationState"></div>
 </div>
-<script data-lift="Host.ifNotLocal" src="js/impress-client.js"></script>
+<script data-lift="IfAudience" src="js/impress-client.js"></script>
 <script data-lift="Presenter"></script>
-<script data-lift="Host.ifLocal" src="js/impress-presenter.js"></script>
+<script data-lift="IfPresenter" src="js/impress-presenter.js"></script>
 <script>impress().init();hljs.initHighlightingOnLoad();</script>
 
 </body>
