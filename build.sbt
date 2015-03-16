@@ -35,14 +35,6 @@ libraryDependencies ++= {
   )
 }
 
-buildInfoSettings
-
-sourceGenerators in Compile <+= buildInfo
-
-buildInfoKeys := Seq[BuildInfoKey](passcode)
-
-buildInfoPackage := "code.build"
-
 packageArchetype.java_application
 
 bashScriptConfigLocation := Some("${app_home}/../conf/jvmopts")
