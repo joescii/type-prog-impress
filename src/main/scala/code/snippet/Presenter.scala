@@ -1,8 +1,6 @@
 package code
 package snippet
 
-import build.BuildInfo.passcode
-
 import net.liftweb.http._
 import js._
 import JsCmds._
@@ -23,6 +21,14 @@ object Presenter {
         Presentation ! id
       })))
   ) else ClearNodes
+
+  private lazy val passcode:String = {
+    val jvmProp = Option(System.getProperty("presentera.passcode"))
+    val envProp = Option(System.getenv("presentera_passcode"))
+    val default = Some("PresenteraMetal!")
+
+    List(jvmProp, envProp, default).flatten.head
+  }
 
   def login(in:NodeSeq):NodeSeq = {
     for {
