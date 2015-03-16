@@ -51,15 +51,18 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery172
     JQueryModule.init()
 
-    LiftRules.earlyResponse.append { (req: Req) =>
-      if(Props.mode != Props.RunModes.Development &&
-         req.path.partPath.headOption == Some("presenter") &&
-         req.request.scheme != "https") {
-        val uriAndQuery = req.uri + (req.request.queryString.map(s => "?"+s) openOr "")
-        val uri = "https://%s%s".format(req.request.serverName, uriAndQuery)
-        Full(PermRedirectResponse(uri, req, req.cookies: _*))
-      }
-      else Empty
-    }
+    // I really wanted https for the /presenter so the passcode would be encrypted.
+    // But ssl is a paid add-on for heroku and I'm cheap.
+    // Oh well, the likelihood of an attacker is low and the damage done is probably lower.
+//    LiftRules.earlyResponse.append { (req: Req) =>
+//      if(Props.mode != Props.RunModes.Development &&
+//         req.path.partPath.headOption == Some("presenter") &&
+//         req.request.scheme != "https") {
+//        val uriAndQuery = req.uri + (req.request.queryString.map(s => "?"+s) openOr "")
+//        val uri = "https://%s%s".format(req.request.serverName, uriAndQuery)
+//        Full(PermRedirectResponse(uri, req, req.cookies: _*))
+//      }
+//      else Empty
+//    }
   }
 }
