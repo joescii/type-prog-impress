@@ -1,6 +1,8 @@
 package code
 package snippet
 
+import build.BuildInfo.passcode
+
 import net.liftweb.http._
 import js._
 import JsCmds._
@@ -27,7 +29,7 @@ object Presenter {
       r <- S.request if r.post_? // make sure it's a post
       p <- S.param("passcode")
     } {
-      if(p == "PresenteraMetal!") {
+      if(p == passcode) {
         model.Presenter(true)
         Presentation ! Presentation.Init
         S.redirectTo("/")
