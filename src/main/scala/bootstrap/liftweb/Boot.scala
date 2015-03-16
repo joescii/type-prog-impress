@@ -11,6 +11,7 @@ import Loc._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery._
 
+import code.rest.Downloads
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -61,5 +62,7 @@ class Boot {
       }
       else Empty
     }
+
+    LiftRules.statelessDispatch.append(Downloads)
   }
 }
