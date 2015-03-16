@@ -1,3 +1,5 @@
+import NativePackagerKeys._
+
 name := "presentera"
 
 version := "0.1.0"
@@ -23,12 +25,13 @@ libraryDependencies ++= {
   val lv = liftVersion.value
   val le = liftEdition.value
   Seq(
-    "net.liftweb"       %% "lift-webkit"        % lv                % "compile",
-    "net.liftmodules"   %% ("lift-jquery-module_"+le) % "2.9-SNAPSHOT",
-    "org.eclipse.jetty" % "jetty-webapp"        % "8.1.7.v20120910"  % "container,test",
+    "net.liftweb"             %% "lift-webkit"              % liftVersion.value     % "compile",
+    "net.liftmodules"         %% ("lift-jquery-module_"+le) % "2.9-SNAPSHOT"        % "compile", // https://github.com/karma4u101/lift-jquery-module
+    "org.eclipse.jetty"       % "jetty-webapp"              % "9.2.7.v20150116"     % "compile",
+    "org.eclipse.jetty"       % "jetty-plus"                % "9.2.7.v20150116"     % "container,test", // For Jetty Config
     "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
-    "ch.qos.logback"    % "logback-classic"     % "1.0.6",
-    "org.specs2"              %% "specs2-core"              % "3.0"                 % "test"
+    "ch.qos.logback"          % "logback-classic"           % "1.0.6"               % "runtime",
+    "org.specs2"              %% "specs2"                   % "2.3.12"              % "test"
   )
 }
 
@@ -39,3 +42,7 @@ sourceGenerators in Compile <+= buildInfo
 buildInfoKeys := Seq[BuildInfoKey](passcode)
 
 buildInfoPackage := "code.build"
+
+packageArchetype.java_application
+
+bashScriptConfigLocation := Some("${app_home}/../conf/jvmopts")
