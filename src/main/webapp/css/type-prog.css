@@ -162,9 +162,7 @@ a:focus {
 
 .step {
     position: relative;
-    width: 1700px;  /* Target resolution is 1920x1080 */
-    padding: 40px;
-    margin: 20px auto;
+    width: 1024px;  /* Target resolution is 1920x1080 */
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing:    border-box;
@@ -173,8 +171,41 @@ a:focus {
     box-sizing:         border-box;
 
     font-family: 'PT Serif', georgia, serif;
-    font-size: 40px;
     line-height: 1.5;
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (max-device-width : 1024px) {
+  .step {
+    width: 900px;
+    font-size: 26px;
+    padding: 20px;
+    margin: 10px auto;
+  }
+}
+@media only screen and (min-device-width : 1025px) and (max-device-width : 1366px) {
+  .step {
+    width: 1024px;
+    font-size: 30px;
+    padding: 30px;
+    margin: 15px auto;
+  }
+}
+@media only screen and (min-device-width : 1367px) and (max-device-width : 1750px) {
+  .step {
+    width: 1366px;
+    font-size: 40px;
+    padding: 40px;
+    margin: 20px auto;
+  }
+}
+@media only screen and (min-device-width : 1751px) {
+  .step {
+    width: 1700px;
+    font-size: 40px;
+    padding: 40px;
+    margin: 20px auto;
+  }
 }
 
 .centered {
@@ -269,14 +300,87 @@ a:focus {
     transform:         translateZ(20px);
 }
 
-#title h1 {
-  font-size: 70px;
+/* iPads (portrait) ----------- */
+@media only screen and (max-device-width : 1024px) {
+  #title h1 {
+    font-size: 35px;
+  }
+
+  #title h2 {
+    font-size: 25px;
+    font-style: italic;
+  }
+
+  #joe-barnes .name {
+    width: 300px;
+  }
+
+  #joe-barnes ul {
+    width: 500px;
+    float: left;
+  }
+}
+@media only screen and (min-device-width : 1025px) and (max-device-width : 1366px) {
+  #title h1 {
+    font-size: 45px;
+  }
+
+  #title h2 {
+    font-size: 35px;
+    font-style: italic;
+  }
+
+  #joe-barnes .name {
+    width: 300px;
+  }
+
+  #joe-barnes ul {
+    width: 600px;
+    float: left;
+  }
+}
+@media only screen and (min-device-width : 1367px) and (max-device-width : 1750px) {
+  #title h1 {
+    font-size: 60px;
+  }
+
+  #title h2 {
+    font-size: 40px;
+    font-style: italic;
+  }
+
+  #joe-barnes .name {
+    width: 400px;
+  }
+
+  #joe-barnes ul {
+    width: 900px;
+    float: left;
+  }
+}
+@media only screen and (min-device-width : 1751px) {
+  #title h1 {
+    font-size: 70px;
+  }
+
+  #title h2 {
+    font-size: 50px;
+    font-style: italic;
+  }
+
+  #joe-barnes .name {
+    width: 500px;
+  }
+
+  #joe-barnes ul {
+    width: 1000px;
+    float: left;
+  }
 }
 
-#title h2 {
-  font-size: 50px;
-  font-style: italic;
-  height: 400px;
+#follow {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #retro {
@@ -288,7 +392,6 @@ a:focus {
 }
 
 #joe-barnes .name {
-  width: 500px;
   float: left;
 }
 
@@ -297,7 +400,6 @@ a:focus {
 }
 
 #joe-barnes ul {
-  width: 800px;
   float: left;
 }
 
@@ -357,10 +459,6 @@ a:focus {
 
 code {
   float: left;
-}
-
-code div {
-  padding-left: 50px;
 }
 
 div.zebra {
