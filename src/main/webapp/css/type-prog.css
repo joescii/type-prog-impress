@@ -238,6 +238,10 @@ a:focus {
   .zebra code {
     height: 60px;
   }
+
+  code {
+    margin-left: 50px;
+  }
 }
 
 .centered {
