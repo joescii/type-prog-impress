@@ -29,6 +29,7 @@ object Presenter {
     } {
       if(p == "PresenteraMetal!") {
         model.Presenter(true)
+        Presentation ! Presentation.Init
         S.redirectTo("/")
       }
     }
