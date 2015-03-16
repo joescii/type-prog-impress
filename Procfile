@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/npmaven
+web: target/universal/stage/bin/presentera
