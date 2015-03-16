@@ -175,36 +175,68 @@ a:focus {
 }
 
 /* iPads (portrait) ----------- */
-@media only screen and (max-device-width : 1024px) {
+@media (max-device-width : 1024px) {
   .step {
     width: 900px;
     font-size: 26px;
     padding: 20px;
     margin: 10px auto;
   }
+
+  .zebra pre {
+    height: 40px;
+  }
+
+  .zebra code {
+    height: 40px;
+  }
 }
-@media only screen and (min-device-width : 1025px) and (max-device-width : 1366px) {
+@media (min-device-width : 1025px) and (max-device-width : 1366px) {
   .step {
     width: 1024px;
     font-size: 30px;
     padding: 30px;
     margin: 15px auto;
   }
+
+  .zebra pre {
+    height: 45px;
+  }
+
+  .zebra code {
+    height: 45px;
+  }
 }
-@media only screen and (min-device-width : 1367px) and (max-device-width : 1750px) {
+@media (min-device-width : 1367px) and (max-device-width : 1750px) {
   .step {
     width: 1366px;
     font-size: 40px;
     padding: 40px;
     margin: 20px auto;
   }
+
+  .zebra pre {
+    height: 60px;
+  }
+
+  .zebra code {
+    height: 60px;
+  }
 }
-@media only screen and (min-device-width : 1751px) {
+@media (min-device-width : 1751px) {
   .step {
     width: 1700px;
     font-size: 40px;
     padding: 40px;
     margin: 20px auto;
+  }
+
+  .zebra pre {
+    height: 60px;
+  }
+
+  .zebra code {
+    height: 60px;
   }
 }
 
@@ -301,7 +333,7 @@ a:focus {
 }
 
 /* iPads (portrait) ----------- */
-@media only screen and (max-device-width : 1024px) {
+@media (max-device-width : 1024px) {
   #title h1 {
     font-size: 35px;
   }
@@ -320,7 +352,7 @@ a:focus {
     float: left;
   }
 }
-@media only screen and (min-device-width : 1025px) and (max-device-width : 1366px) {
+@media (min-device-width : 1025px) and (max-device-width : 1366px) {
   #title h1 {
     font-size: 45px;
   }
@@ -339,7 +371,7 @@ a:focus {
     float: left;
   }
 }
-@media only screen and (min-device-width : 1367px) and (max-device-width : 1750px) {
+@media (min-device-width : 1367px) and (max-device-width : 1750px) {
   #title h1 {
     font-size: 60px;
   }
@@ -358,7 +390,7 @@ a:focus {
     float: left;
   }
 }
-@media only screen and (min-device-width : 1751px) {
+@media (min-device-width : 1751px) {
   #title h1 {
     font-size: 70px;
   }
@@ -466,14 +498,6 @@ div.zebra {
   height: auto;
   border: rgb(0, 40, 140);
   border-style: solid;
-}
-
-.zebra pre {
-  height: 60px;
-}
-
-.zebra code {
-  height: 60px;
 }
 
 .scala {
