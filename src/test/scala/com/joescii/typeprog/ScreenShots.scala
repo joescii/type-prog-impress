@@ -11,13 +11,16 @@ class ScreenShots extends FlatSpec with Chrome {
     webDriver.manage().window().maximize()
     setCaptureDir("target/screenshots")
 
-    def pgDown = new Actions(webDriver).sendKeys(Keys.PAGE_DOWN)
+    val lastStepId = "links"
+    def waitForAnimation(millis:Int) = Thread sleep millis
+    def captureStep(i:Int) = capture to (i.toString)
+    def advance() = new Actions(webDriver).sendKeys(Keys.PAGE_DOWN).perform()
 
-    Stream.continually(currentUrl).takeWhile(!_.endsWith("/#/links")).zipWithIndex.foreach { case (url, i) =>
-      Thread sleep 1500
-      if(currentUrl endsWith "/#/cat-memes") Thread sleep 4000 // let the cat memes appear
-      capture to (i.toString)
-      pgDown.perform()
+    Stream.continually(currentUrl).takeWhile(!_.endsWith(s"/#/$lastStepId")).zipWithIndex.foreach { case (url, i) =>
+      waitForAnimation(1500)
+      if(currentUrl endsWith "/#/cat-memes") waitForAnimation(4000) // let the cat memes appear
+      captureStep(i)
+      advance()
     }
 
 
