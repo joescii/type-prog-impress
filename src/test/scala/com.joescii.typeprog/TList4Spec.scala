@@ -9,9 +9,12 @@ object TList4Spec {
   type Nat4 = NatN[Nat3]
   type Nat6 = NatN[NatN[Nat4]]
 
-  type List1 = Nat2 :: Nat1 :: Nat0 :: Nat1 :: TNil
-  implicitly[List1#fold[Nat0, ({type F[a <: Nat, b <: Nat] = a + b})#F] =:= Nat4]
+  type L1 = Nat2 :: Nat1 :: Nat0 :: Nat1 :: TNil
+  type LF = L1#fold[Nat0,
+    ({type F[A <: Nat, B <: Nat] = A + B})#F
+  ]
+  implicitly[LF =:= Nat4]
 
-  type List2 = Nat1 :: Nat1 :: Nat3 :: Nat2 :: Nat1 :: TNil
-  implicitly[List2#fold[Nat1, ({type F[a <: Nat, b <: Nat] = a * b})#F] =:= Nat6]
+  type L2 = Nat1 :: Nat1 :: Nat3 :: Nat2 :: Nat1 :: TNil
+  implicitly[L2#fold[Nat1, ({type F[A <: Nat, B <: Nat] = A * B})#F] =:= Nat6]
 }

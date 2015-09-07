@@ -7,9 +7,12 @@ object TList1Spec {
   type Nat2 = NatN[Nat1]
   type Nat3 = NatN[Nat2]
 
-  type List1 = Nat0 :: Nat1 :: Nat2 :: TNil
-  type List2 = Nat3 :: Nat2 :: Nat1 :: TNil
+  type L = Nat0 :: Nat1 :: Nat2 :: TNil
+  implicitly[L#size =:= Nat3]
+  illTyped("implicitly[List1#size =:= Nat2]")
+
+  type L2 = Nat3 :: Nat2 :: Nat1 :: TNil
 
   illTyped("implicitly[List1 =:= List2]")
-  implicitly[List1#size =:= List2#size]
+  implicitly[L#size =:= L2#size]
 }
