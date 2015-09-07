@@ -23,6 +23,6 @@ object TypeLists {
   type NTNil = TNil[Nat]
   type :+:[H <: Nat, T <: TypeList[Nat]] = ::[Nat, H, T]
 
-  type BTNil = TNil[Bool]
-  type :|:[H <: Bool, T <: TypeList[Bool]] = ::[Bool, H, T]
+  type BTNil = TNil[BoolType]
+  type :|:[H <: BoolType, T <: TypeList[BoolType]] = ::[BoolType, H, T]
 }

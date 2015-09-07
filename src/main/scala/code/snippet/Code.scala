@@ -2,6 +2,7 @@ package code.snippet
 
 import net.liftweb.http.{LiftRules, S}
 import net.liftweb.util.Helpers._
+import net.liftweb.common.Full
 
 import scala.util.Try
 import scala.xml.NodeSeq
@@ -14,13 +15,13 @@ object Code {
     code <- LiftRules.loadResourceAsString(name)
   } yield {
     val lines = code.split("(?s)\r?\n").toList
-    val range = firstLine.map { first =>
-      val last = lastLine.getOrElse(first)
-      lines
-        .drop(first - 1)
-        .take(last - first + 1)
-    }.getOrElse(lines)
-    val trimmed = trimIndentation(range)
+    val rs = ranges
+    val selectedLines = if(rs.isEmpty) lines else
+      rs.map(r => lines
+        .drop(r.head - 1)
+        .take(r.last - r.head + 1)
+      ).reduce(_ ++ _)
+    val trimmed = trimIndentation(selectedLines)
     trimmed.mkString(newline)
   }).openOr("// Source not found!!!")
 
@@ -29,11 +30,16 @@ object Code {
     case other => other
   }).openOr("")
 
-  private def lineParse(which:Array[String] => String) = S.attr("l").toOption.flatMap( l =>
-    Try(which(l.split("-")).toInt).toOption
-  )
-  private def firstLine = lineParse(_.head)
-  private def lastLine  = lineParse(_.last)
+  private def ranges:List[Range] = Stream.from(1).map( i => for {
+    lines <- S.attr(if(i == 1) "l" else "l"+i)
+    arr = lines.split("-")
+    first <- Try(arr.head.toInt).toOption
+    last  <- Try(arr.last.toInt).toOption
+  } yield {
+    first to last
+  }).takeWhile(_.isDefined)
+    .collect { case Full(r) => r }
+    .toList
 
   private def append(html:NodeSeq) = "* *+" #> html
 

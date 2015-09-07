@@ -3,16 +3,16 @@ package com.joescii.typeprog
 import shapeless.test.illTyped
 
 object Bool1Specs {
-  implicitly[True  =:= True]
-  implicitly[False =:= False]
+  implicitly[TrueType  =:= TrueType]
+  implicitly[FalseType =:= FalseType]
 
-  implicitly[True#Not  =:= False]
-  implicitly[False#Not =:= True]
+  implicitly[TrueType#Not  =:= FalseType]
+  implicitly[FalseType#Not =:= TrueType]
 
-  implicitly[True#Or[True] =:= True]
-  implicitly[True#Or[False] =:= True]
-  implicitly[False#Or[True] =:= True]
-  implicitly[False#Or[False] =:= False]
+  implicitly[TrueType#Or[TrueType] =:= TrueType]
+  implicitly[TrueType#Or[FalseType] =:= TrueType]
+  implicitly[FalseType#Or[TrueType] =:= TrueType]
+  implicitly[FalseType#Or[FalseType] =:= FalseType]
 
   illTyped("implicitly[True  =:= False]")
   illTyped("implicitly[False =:= True]")
