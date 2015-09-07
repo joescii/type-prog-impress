@@ -6,5 +6,5 @@ object TList2Spec {
   type Nat3 = NatN[Nat2]
   type Nat6 = NatN[NatN[NatN[Nat3]]]
 
-//  implicitly[(Nat1 :: Nat2 :: Nat3 :: TNil)#reduce =:= Nat6]
+  implicitly[(Nat1 :: Nat2 :: Nat3 :: TNil)#reduce =:= Nat6]
 }

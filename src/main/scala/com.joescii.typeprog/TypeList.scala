@@ -1,28 +1,22 @@
 package com.joescii.typeprog
 
-sealed trait TypeList[E] {
+import Nat._
+
+sealed trait TypeList {
   type size <: Nat
-//  type reduce <: E
-  type map[F[_ <: E] <: E] <: TypeList[E]
-  type fold[A <: E, F[_ <: E, _ <: E] <: E] <: E
+  type reduce <: Nat
+  type map[F[_ <: Nat] <: Nat] <: TypeList
+  type fold[A <: Nat, F[_ <: Nat, _ <: Nat] <: Nat] <: Nat
 }
-sealed trait TNil[E] extends TypeList[E] {
+sealed trait TNil extends TypeList {
   type size = Nat0
-//  type reduce = Nat0
-  type map[F[_ <: E] <: E] = TNil[E]
-  type fold[A <: E, F[_ <: E, _ <: E] <: E] = A
+  type reduce = Nat0
+  type map[F[_ <: Nat] <: Nat] = TNil
+  type fold[A <: Nat, F[_ <: Nat, _ <: Nat] <: Nat] = A
 }
-sealed trait ::[E, H <: E, T <: TypeList[E]] extends TypeList[E] {
+sealed trait ::[H <: Nat, T <: TypeList] extends TypeList {
   type size = NatN[T#size]
-//  type reduce = H#plus[T#reduce]
-  type map[F[_ <: E] <: E] = ::[E, F[H], T#map[F]]
-  type fold[A <: E, F[_ <: E, _ <: E] <: E] = F[H, T#fold[A, F]]
-}
-
-object TypeLists {
-  type NTNil = TNil[Nat]
-  type :+:[H <: Nat, T <: TypeList[Nat]] = ::[Nat, H, T]
-
-  type BTNil = TNil[BoolType]
-  type :|:[H <: BoolType, T <: TypeList[BoolType]] = ::[BoolType, H, T]
+  type reduce = H + (T#reduce)
+  type map[F[_ <: Nat] <: Nat] = F[H] :: T#map[F]
+  type fold[A <: Nat, F[_ <: Nat, _ <: Nat] <: Nat] = F[H, T#fold[A, F]]
 }
