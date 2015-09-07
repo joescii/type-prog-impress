@@ -6,7 +6,7 @@ import org.openqa.selenium.{ Keys, By }
 import org.openqa.selenium.interactions.Actions
 
 class ScreenShots extends FlatSpec with Chrome {
-  "The presentation" should "advance until the end" in {
+  "The presentation" should "advance until the end" ignore {
     go to ("http://localhost:8080/")
     webDriver.manage().window().maximize()
     setCaptureDir("target/screenshots")
