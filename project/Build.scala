@@ -6,7 +6,7 @@ object RootBuild extends Build {
   val liftEdition = SettingKey[String]("liftEdition", "Lift Edition (short version number to append to artifact name)")
 
   lazy val project = Project(
-    id = "presentera",
+    id = "type-prog",
     base = file("."),
     settings = Project.defaultSettings ++
       Defaults.itSettings ++

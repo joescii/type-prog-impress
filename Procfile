@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/presentera
+web: target/universal/stage/bin/type-prog
