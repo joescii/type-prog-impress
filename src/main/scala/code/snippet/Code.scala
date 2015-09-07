@@ -46,9 +46,7 @@ object Code {
 
     val html = <pre>
       <code class={s"$lang $bg"}>
-        <div>
-          {src}
-        </div>
+        <div>{src}</div>
       </code>
     </pre>
 
