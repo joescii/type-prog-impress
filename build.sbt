@@ -33,9 +33,9 @@ libraryDependencies ++= {
     "org.eclipse.jetty"       % "jetty-plus"                % "9.2.7.v20150116"     % "container,test", // For Jetty Config
     "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
     "ch.qos.logback"          % "logback-classic"           % "1.0.6"               % "runtime",
-    "org.scalatest"           %% "scalatest"                % "2.2.4"               % "test->*",
-    "org.seleniumhq.selenium" %  "selenium-java"            % "2.46.0"              % "test",
-    "com.chuusai"    %% "shapeless"   % "2.2.1" % "test"
+    "org.scalatest"           %% "scalatest"                % "2.2.4"               % "it,test->*",
+    "com.chuusai"             %% "shapeless"                % "2.2.1"               % "test",
+    "org.seleniumhq.selenium" %  "selenium-java"            % "2.46.0"              % "it"
   )
 }
 
@@ -47,4 +47,4 @@ initialize~= { _ =>
   System.setProperty("webdriver.chrome.driver", "src/test/drivers/chromedriver.exe")
 }
 
-(Keys.test in Test) <<= (Keys.test in Test) dependsOn (start in container.Configuration)
+(Keys.test in IntegrationTest) <<= (Keys.test in IntegrationTest) dependsOn (start in container.Configuration)
