@@ -498,6 +498,11 @@ a:focus {
   margin: auto;
 }
 
+#type-all-the-things img {
+  display: block;
+  margin: auto;
+}
+
 code {
   float: left;
 }
