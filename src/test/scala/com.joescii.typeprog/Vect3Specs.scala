@@ -18,6 +18,6 @@ class Vect3Specs extends FlatSpec with Matchers {
     val v2 = (4 :: 1 :: 3 :: VNil)
     val v3 = (5 :: 2 :: 4 :: 1 :: 3 :: VNil)
 
-    (v1 ++ v2) should equal (v3)
+    v1 ++ v2 shouldEqual v3
   }
 }
