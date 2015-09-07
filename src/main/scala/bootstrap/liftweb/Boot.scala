@@ -64,5 +64,22 @@ class Boot {
     }
 
     LiftRules.statelessDispatch.append(Downloads)
+
+    LiftRules.securityRules = () => {
+      SecurityRules(content = Some(ContentSecurityPolicy(
+        styleSources = List(
+          ContentSourceRestriction.UnsafeInline,
+          ContentSourceRestriction.All
+        ),
+        fontSources = List(
+          ContentSourceRestriction.All
+        ),
+        scriptSources = List(
+          ContentSourceRestriction.UnsafeEval,
+          ContentSourceRestriction.UnsafeInline,
+          ContentSourceRestriction.Self
+        )
+      )))
+    }
   }
 }
