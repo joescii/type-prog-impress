@@ -1,10 +1,10 @@
 import NativePackagerKeys._
 
-name := "presentera"
+name := "type-prog"
 
 version := "0.1.0"
 
-organization := "net.liftweb"
+organization := "com.joescii"
 
 scalaVersion := "2.11.7"
 
@@ -16,6 +16,8 @@ resolvers ++= Seq(
 seq(webSettings :_*)
 
 unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
+
+(webappResources in Compile) <+= (sourceDirectory in Compile)
 
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
