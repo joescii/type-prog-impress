@@ -493,6 +493,11 @@ a:focus {
   text-align: center;
 }
 
+#morpheus img {
+  display: block;
+  margin: auto;
+}
+
 code {
   float: left;
 }

@@ -20,4 +20,11 @@ class Vect3Specs extends FlatSpec with Matchers {
 
     v1 ++ v2 shouldEqual v3
   }
+  
+  "The concat and sum" should "mix nicely" in {
+    val sum =
+      ((1 :: 2 :: VNil) ++ (3 :: VNil)) +
+        (4 :: 5 :: 6 :: VNil)
+    sum shouldEqual 5 :: 7 :: 9 :: VNil
+  }
 }
