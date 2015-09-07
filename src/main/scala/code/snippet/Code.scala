@@ -35,12 +35,25 @@ object Code {
   private def firstLine = lineParse(_.head)
   private def lastLine  = lineParse(_.last)
 
-  def render(in:NodeSeq):NodeSeq =
-    <pre>
-      <code class={lang}>
-        <div>{src}</div>
+  private def append(html:NodeSeq) = "* *+" #> html
+
+  def render(in:NodeSeq):NodeSeq = {
+    val bg = in.headOption
+      .map(_ \ "@data-bg")
+      .map(_.toString)
+      .map(bg => if(bg contains "sc") "light" else "dark")
+      .headOption.getOrElse("light")
+
+    val html = <pre>
+      <code class={s"$lang $bg"}>
+        <div>
+          {src}
+        </div>
       </code>
     </pre>
+
+    append(html)(in)
+  }
 
   private val CodeRegex = """(\s*).*?""".r
   private def spaces(line:String):Int = {

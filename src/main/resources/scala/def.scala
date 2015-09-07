@@ -1,1 +1,0 @@
-def now = new java.util.Date

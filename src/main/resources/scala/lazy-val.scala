@@ -1,1 +1,0 @@
-lazy val str = "a"+"b"+"c"

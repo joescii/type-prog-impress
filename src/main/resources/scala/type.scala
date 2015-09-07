@@ -1,1 +1,0 @@
-type MyMap = Map[Int, String]
