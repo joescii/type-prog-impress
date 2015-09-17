@@ -162,7 +162,7 @@ a:focus {
 
 .step {
     position: relative;
-    width: 1024px;  /* Target resolution is 1920x1080 */
+    width: 1024px;  /* Target resolution is 1024x768 */
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing:    border-box;
