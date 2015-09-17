@@ -4,8 +4,10 @@ package com.joescii.typeprog
 import BoolType._
 
 object Bool4Specs {
-  // A type with two parameters can be written in infix notation:
-  implicitly[\/[FalseType, FalseType] =:= (FalseType \/ FalseType)]
+  // A type with two parameters
+  // can be written in infix notation:
+  implicitly[\/[FalseType, FalseType]
+    =:= (FalseType \/ FalseType)]
 
   implicitly[TrueType \/ FalseType =:= TrueType]
   implicitly[TrueType /\ FalseType =:= FalseType]
